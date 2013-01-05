@@ -12,3 +12,6 @@ To get your Mono for Android game showing up in the OUYA Launcher, you will need
         , Categories = new[] { Intent.CategoryLauncher, "ouya.intent.category.GAME" })]
 
 Deploy the game to the device.  Now it will show up in the OUYA Launcher.
+
+
+Disclaimer: This project is a community-supported extension to the OUYA Development Kit and is in no way connected to OUYA, Inc. The OUYA name is owned by OUYA, Inc.
