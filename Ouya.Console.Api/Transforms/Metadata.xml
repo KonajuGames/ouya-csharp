@@ -1,0 +1,20 @@
+<metadata>
+  <!-- Rename namespaces to remove initial "tv" -->
+  <attr path="/api/package[@name='tv.ouya.console.api']" name="managedName">Ouya.Console.Api</attr>
+  <attr path="/api/package[@name='tv.ouya.console.internal']" name="managedName">Ouya.Console.Internal</attr>
+  <!-- Remove problematic classes for now -->
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CancelIgnoringOuyaResponseListener']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CancelIgnoringJsonResponseListener']" />
+  <!-- Remove deprecated method -->
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='interpret']" />
+  <!-- Rename method parameters -->
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getControllerByDeviceId']/parameter[@name='p0']" name="name">deviceId</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getControllerByPlayer']/parameter[@name='p0']" name="name">playerNum</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='onKeyDown']/parameter[@name='p0']" name="name">keyCode</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='onKeyDown']/parameter[@name='p1']" name="name">event</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='onKeyUp']/parameter[@name='p0']" name="name">keyCode</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='onKeyUp']/parameter[@name='p1']" name="name">event</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='onGenericMotionEvent']/parameter[@name='p0']" name="name">event</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getAxisValue']/parameter[@name='p0']" name="name">ouyaAxis</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getButton']/parameter[@name='p0']" name="name">ouyaButton</attr>
+</metadata>
