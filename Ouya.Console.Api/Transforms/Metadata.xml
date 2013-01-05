@@ -1,20 +1,89 @@
 <metadata>
+  <!--
+    To be done:
+      OuyaController
+        AvailableButtons, AvailableAxes: Remove setter from property
+  -->
   <!-- Rename namespaces to remove initial "tv" -->
   <attr path="/api/package[@name='tv.ouya.console.api']" name="managedName">Ouya.Console.Api</attr>
   <attr path="/api/package[@name='tv.ouya.console.internal']" name="managedName">Ouya.Console.Internal</attr>
+  <attr path="/api/package[@name='tv.ouya.console.util.http']" name="managedName">Ouya.Console.Util.Http</attr>
   <!-- Remove problematic classes for now -->
-  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CancelIgnoringOuyaResponseListener']" />
-  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CancelIgnoringJsonResponseListener']" />
-  <!-- Remove deprecated method -->
+  <add-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CancelIgnoringOuyaResponseListener']">
+    <method name="onSuccess" return="void" abstract="false" native="false" synchronized="false" static="false" final="false" deprecated="not deprecated" visibility="public">
+      <parameter name="p0" type="java.lang.Object" />
+    </method>
+  </add-node>
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CancelIgnoringJsonResponseListener']">
+    <method name="onSuccess" return="void" abstract="true" native="false" synchronized="false" static="false" final="false" deprecated="not deprecated" visibility="public">
+      <parameter name="p0" type="java.lang.Object" />
+    </method>
+  </remove-node>
+  <!-- Remove deprecated methods -->
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='interpret']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='bindRequestHasBeenMade']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='setInstance']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='bindRequestHasBeenMade']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='setInstance']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager']/method[@name='bindRequestHasBeenMade']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager']/method[@name='setInstance']" />
   <!-- Rename method parameters -->
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getControllerByDeviceId']/parameter[@name='p0']" name="name">deviceId</attr>
-  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getControllerByPlayer']/parameter[@name='p0']" name="name">playerNum</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getControllerByPlayer']/parameter[@name='p0']" name="name">playerIndex</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='onKeyDown']/parameter[@name='p0']" name="name">keyCode</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='onKeyDown']/parameter[@name='p1']" name="name">event</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='onKeyUp']/parameter[@name='p0']" name="name">keyCode</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='onKeyUp']/parameter[@name='p1']" name="name">event</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='onGenericMotionEvent']/parameter[@name='p0']" name="name">event</attr>
-  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getAxisValue']/parameter[@name='p0']" name="name">ouyaAxis</attr>
-  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getButton']/parameter[@name='p0']" name="name">ouyaButton</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getAxisValue']/parameter[@name='p0']" name="name">axis</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getButton']/parameter[@name='p0']" name="name">button</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='decryptReceiptResponse']/parameter[@name='p0']" name="name">receiptResponse</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='init']/parameter[@name='p0']" name="name">context</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='init']/parameter[@name='p1']" name="name">developerUuid</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='onServiceConnected']/parameter[@name='p0']" name="name">componentName</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='onServiceConnected']/parameter[@name='p1']" name="name">binder</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='onServiceDisconnected']/parameter[@name='p0']" name="name">componentName</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='requestGamerUuid']/parameter[@name='p0']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='requestProductList']/parameter[@name='p0']" name="name">purchasables</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='requestProductList']/parameter[@name='p1']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='requestPurchase']/parameter[@name='p0']" name="name">purchasable</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='requestPurchase']/parameter[@name='p1']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='requestReceipts']/parameter[@name='p0']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/interface[@name='OuyaResponseListener']/method[@name='onFailure']/parameter[@name='p0']" name="name">errorCode</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/interface[@name='OuyaResponseListener']/method[@name='onFailure']/parameter[@name='p1']" name="name">errorMessage</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/interface[@name='OuyaResponseListener']/method[@name='onFailure']/parameter[@name='p2']" name="name">optionalData</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/interface[@name='OuyaResponseListener']/method[@name='onSuccess']/parameter[@name='p0']" name="name">result</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='RequestRunnable']/constructor/parameter[@name='p0']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='RequestRunnable']/constructor/parameter[@name='p1']" name="name">target</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/constructor/parameter[@name='p0']" name="name">context</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='getInstance']/parameter[@name='p0']" name="name">context</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='init']/parameter[@name='p0']" name="name">context</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='onServiceConnected']/parameter[@name='p0']" name="name">componentName</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='onServiceConnected']/parameter[@name='p1']" name="name">binder</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='onServiceDisconnected']/parameter[@name='p0']" name="name">componentName</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestAppDownloadUrl']/parameter[@name='p0']" name="name">uuid</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestAppDownloadUrl']/parameter[@name='p1']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestAppInfo']/parameter[@name='p0']" name="name">uuid</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestAppInfo']/parameter[@name='p1']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestAppList']/parameter[@name='p0']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestCreateNewUser']/parameter[@name='p0']" name="name">userInfo</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestCreateNewUser']/parameter[@name='p1']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestDeregisterConsole']/parameter[@name='p0']" name="name">consoleId</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestDeregisterConsole']/parameter[@name='p1']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestDeveloperAppList']/parameter[@name='p0']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestRegisterConsole']/parameter[@name='p0']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestResendEmail']/parameter[@name='p0']" name="name">emailAddress</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestResendEmail']/parameter[@name='p1']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestUpdateUserInfo']/parameter[@name='p0']" name="name">userInfo</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestUpdateUserInfo']/parameter[@name='p1']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']/method[@name='requestUserInfo']/parameter[@name='p0']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager']/constructor/parameter[@name='p0']" name="name">context</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager']/method[@name='getInstance']/parameter[@name='p0']" name="name">context</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager']/method[@name='onServiceConnected']/parameter[@name='p0']" name="name">componentName</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager']/method[@name='onServiceConnected']/parameter[@name='p1']" name="name">binder</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager']/method[@name='onServiceDisconnected']/parameter[@name='p0']" name="name">componentName</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager']/method[@name='requestUserAddsAccount']/parameter[@name='p0']" name="name">activity</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager']/method[@name='requestUserAddsAccount']/parameter[@name='p1']" name="name">listener</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager']/method[@name='requestUsername']/parameter[@name='p0']" name="name">consoleId</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager']/method[@name='requestUsername']/parameter[@name='p1']" name="name">listener</attr>
 </metadata>

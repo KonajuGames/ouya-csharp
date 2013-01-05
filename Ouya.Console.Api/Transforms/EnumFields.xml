@@ -11,7 +11,7 @@
     <field jni-name="Fragment_tag" clr-name="Tag" value="2" />
   </mapping>
   -->
-  <mapping jni-class="tv/ouya/console/api$OuyaController" clr-enum-type="Ouya.Console.Api.AxisType">
+  <mapping jni-class="tv/ouya/console/api/OuyaController" clr-enum-type="Ouya.Console.Api.AxisType">
     <field jni-name="AXIS_LS_X" clr-name="LeftX" value="0" />
     <field jni-name="AXIS_LS_Y" clr-name="LeftY" value="1" />
     <field jni-name="AXIS_RS_X" clr-name="RightX" value="11" />
@@ -19,7 +19,7 @@
     <field jni-name="AXIS_L2" clr-name="LeftTrigger" value="17" />
     <field jni-name="AXIS_R2" clr-name="RightTrigger" value="18" />
   </mapping>
-  <mapping jni-class="tv/ouya/console/api$OuyaController" clr-enum-type="Ouya.Console.Api.Buttons">
+  <mapping jni-class="tv/ouya/console/api/OuyaController" clr-enum-type="Ouya.Console.Api.Buttons">
     <field jni-name="BUTTON_A" clr-name="A" value="97" />
     <field jni-name="BUTTON_DPAD_DOWN" clr-name="Down" value="20" />
     <field jni-name="BUTTON_DPAD_LEFT" clr-name="Left" value="21" />

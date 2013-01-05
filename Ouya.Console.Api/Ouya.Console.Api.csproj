@@ -61,7 +61,7 @@
     <ReferenceJar Include="Jars\guava-r09.jar" />
   </ItemGroup>
   <ItemGroup>
-    <InputJar Include="Jars\ouya-sdk.jar" />
+    <EmbeddedJar Include="Jars\ouya-sdk.jar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
