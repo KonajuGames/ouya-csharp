@@ -1,0 +1,2681 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<api>
+<package name="tv.ouya.console.api">
+<class abstract="true" deprecated="not deprecated" extends="tv.ouya.console.api.JsonResponseListener" extends-generic-aware="tv.ouya.console.api.JsonResponseListener&lt;T&gt;" final="false" name="CancelIgnoringJsonResponseListener" static="false" visibility="public">
+<typeParameters>
+<typeParameter name="T"/>
+</typeParameters>
+<constructor deprecated="not deprecated" final="false" name="CancelIgnoringJsonResponseListener" static="false" type="tv.ouya.console.api.CancelIgnoringJsonResponseListener" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="java.util.Map&lt;java.lang.String, java.lang.String[]&gt;">
+</parameter>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="T">
+</parameter>
+</method>
+</class>
+<class abstract="true" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="CancelIgnoringOuyaResponseListener" static="false" visibility="public">
+<typeParameters>
+<typeParameter name="T"/>
+</typeParameters>
+<implements name="tv.ouya.console.api.OuyaResponseListener" name-generic-aware="tv.ouya.console.api.OuyaResponseListener&lt;T&gt;">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="CancelIgnoringOuyaResponseListener" static="false" type="tv.ouya.console.api.CancelIgnoringOuyaResponseListener" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="true" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="GamerIdentity" static="false" visibility="public">
+<constructor deprecated="deprecated" final="false" name="GamerIdentity" static="false" type="tv.ouya.console.api.GamerIdentity" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="getGamerToken" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInstance" native="false" return="tv.ouya.console.api.GamerIdentity" static="true" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setGamerToken" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="deprecated" final="false" name="setInstance" native="false" return="void" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.GamerIdentity">
+</parameter>
+</method>
+</class>
+<class abstract="true" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="JsonResponseListener" static="false" visibility="public">
+<typeParameters>
+<typeParameter name="T"/>
+</typeParameters>
+<constructor deprecated="not deprecated" final="false" name="JsonResponseListener" static="false" type="tv.ouya.console.api.JsonResponseListener" visibility="public">
+</constructor>
+<method abstract="true" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="java.util.Map&lt;java.lang.String, java.lang.String[]&gt;">
+</parameter>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="T">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="packageAsBundle" native="false" return="android.os.Bundle" static="false" synchronized="false" visibility="protected">
+<parameter name="p0" type="java.util.Map&lt;java.lang.String, java.lang.String[]&gt;">
+</parameter>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="OuyaController" static="false" visibility="public">
+<method abstract="false" deprecated="not deprecated" final="false" name="getAxisValue" native="false" return="float" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getButton" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getControllerByDeviceId" native="false" return="tv.ouya.console.api.OuyaController" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getControllerByPlayer" native="false" return="tv.ouya.console.api.OuyaController" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getDevice" native="false" return="android.view.InputDevice" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getDeviceId" native="false" return="int" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getPlayerNum" native="false" return="int" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="deprecated" final="false" name="interpret" native="false" return="int" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onGenericMotionEvent" native="false" return="boolean" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.view.MotionEvent">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onKeyDown" native="false" return="boolean" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="android.view.KeyEvent">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onKeyUp" native="false" return="boolean" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="android.view.KeyEvent">
+</parameter>
+</method>
+<field deprecated="not deprecated" final="false" name="AVAILABLE_AXES" static="true" transient="false" type="java.util.List" type-generic-aware="java.util.List&lt;java.lang.Integer&gt;" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="false" name="AVAILABLE_BUTTONS" static="true" transient="false" type="java.util.List" type-generic-aware="java.util.List&lt;java.lang.Integer&gt;" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="AXIS_L2" static="true" transient="false" type="int" type-generic-aware="int" value="17" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="AXIS_LS_X" static="true" transient="false" type="int" type-generic-aware="int" value="0" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="AXIS_LS_Y" static="true" transient="false" type="int" type-generic-aware="int" value="1" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="AXIS_R2" static="true" transient="false" type="int" type-generic-aware="int" value="18" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="AXIS_RS_X" static="true" transient="false" type="int" type-generic-aware="int" value="11" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="AXIS_RS_Y" static="true" transient="false" type="int" type-generic-aware="int" value="14" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="BUTTON_A" static="true" transient="false" type="int" type-generic-aware="int" value="97" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="BUTTON_DPAD_DOWN" static="true" transient="false" type="int" type-generic-aware="int" value="20" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="BUTTON_DPAD_LEFT" static="true" transient="false" type="int" type-generic-aware="int" value="21" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="BUTTON_DPAD_RIGHT" static="true" transient="false" type="int" type-generic-aware="int" value="22" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="BUTTON_DPAD_UP" static="true" transient="false" type="int" type-generic-aware="int" value="19" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="BUTTON_L1" static="true" transient="false" type="int" type-generic-aware="int" value="102" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="BUTTON_L2" static="true" transient="false" type="int" type-generic-aware="int" value="104" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="BUTTON_L3" static="true" transient="false" type="int" type-generic-aware="int" value="106" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="BUTTON_O" static="true" transient="false" type="int" type-generic-aware="int" value="96" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="BUTTON_R1" static="true" transient="false" type="int" type-generic-aware="int" value="103" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="BUTTON_R2" static="true" transient="false" type="int" type-generic-aware="int" value="105" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="BUTTON_R3" static="true" transient="false" type="int" type-generic-aware="int" value="107" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="BUTTON_SYSTEM" static="true" transient="false" type="int" type-generic-aware="int" value="3" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="BUTTON_U" static="true" transient="false" type="int" type-generic-aware="int" value="99" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="BUTTON_Y" static="true" transient="false" type="int" type-generic-aware="int" value="100" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="MAX_CONTROLLERS" static="true" transient="false" type="int" type-generic-aware="int" value="4" visibility="public" volatile="false">
+</field>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="OuyaEncryptionHelper" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="OuyaEncryptionHelper" static="false" type="tv.ouya.console.api.OuyaEncryptionHelper" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="decryptReceiptResponse" native="false" return="java.util.List&lt;tv.ouya.console.api.Receipt&gt;" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="OuyaErrorCodes" static="false" visibility="public">
+<field deprecated="not deprecated" final="true" name="CONSOLE_ALREADY_REGISTERED" static="true" transient="false" type="int" type-generic-aware="int" value="2008" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="EMAIL_NOT_CONFIRMED" static="true" transient="false" type="int" type-generic-aware="int" value="2010" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="ERROR_PARSING_RESPONSE_FROM_SERVER" static="true" transient="false" type="int" type-generic-aware="int" value="3002" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="ERROR_REMOTE_EXCEPTION" static="true" transient="false" type="int" type-generic-aware="int" value="3003" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="FIELD_VALIDATIONS_FAILED" static="true" transient="false" type="int" type-generic-aware="int" value="2006" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="INSUFFICIENT_CREDIT" static="true" transient="false" type="int" type-generic-aware="int" value="2011" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="INVALID_APP_UUID" static="true" transient="false" type="int" type-generic-aware="int" value="2005" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="INVALID_AUTHENTICATION_DATA" static="true" transient="false" type="int" type-generic-aware="int" value="2001" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="INVALID_CATEGORY" static="true" transient="false" type="int" type-generic-aware="int" value="2012" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="INVALID_CONSOLE_ID" static="true" transient="false" type="int" type-generic-aware="int" value="2007" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="INVALID_DEVELOPER_UUID" static="true" transient="false" type="int" type-generic-aware="int" value="2002" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="INVALID_PRODUCT_ID" static="true" transient="false" type="int" type-generic-aware="int" value="2003" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="INVALID_TOKEN" static="true" transient="false" type="int" type-generic-aware="int" value="1000" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="NOT_DEVELOPER" static="true" transient="false" type="int" type-generic-aware="int" value="2009" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="NO_AUTHENTICATION_DATA" static="true" transient="false" type="int" type-generic-aware="int" value="2001" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="PAYMENT_DECLINED" static="true" transient="false" type="int" type-generic-aware="int" value="2004" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="REQUIRED_PARAMETER_NOT_PROVIDED" static="true" transient="false" type="int" type-generic-aware="int" value="1001" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="SERVER_OFFLINE" static="true" transient="false" type="int" type-generic-aware="int" value="3005" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="THROW_DURING_ON_SUCCESS" static="true" transient="false" type="int" type-generic-aware="int" value="3004" visibility="public" volatile="false">
+</field>
+</interface>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="OuyaFacade" static="false" visibility="public">
+<implements name="android.content.ServiceConnection" name-generic-aware="android.content.ServiceConnection">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="OuyaFacade" static="false" type="tv.ouya.console.api.OuyaFacade" visibility="protected">
+</constructor>
+<method abstract="false" deprecated="deprecated" final="false" name="bindRequestHasBeenMade" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInstance" native="false" return="tv.ouya.console.api.OuyaFacade" static="true" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="init" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.content.Context">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="isInitialized" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onServiceConnected" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.content.ComponentName">
+</parameter>
+<parameter name="p1" type="android.os.IBinder">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onServiceDisconnected" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.content.ComponentName">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestGamerUuid" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.String&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestProductList" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.util.List&lt;tv.ouya.console.api.Purchasable&gt;">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.util.ArrayList&lt;tv.ouya.console.api.Product&gt;&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestPurchase" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.Purchasable">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;tv.ouya.console.api.Product&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestReceipts" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.String&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="deprecated" final="false" name="setInstance" native="false" return="void" static="true" synchronized="false" visibility="protected">
+<parameter name="p0" type="tv.ouya.console.api.OuyaFacade">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="shutdown" native="false" return="void" static="false" synchronized="false" visibility="public">
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="OuyaFacade.1" static="true" visibility=""/>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable" final="false" name="OuyaFacade.RequestGamerUuidRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="OuyaFacade.RequestGamerUuidRunnable" static="false" type="tv.ouya.console.api.OuyaFacade.RequestGamerUuidRunnable" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.String&gt;">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable" final="false" name="OuyaFacade.RequestProductListRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="OuyaFacade.RequestProductListRunnable" static="false" type="tv.ouya.console.api.OuyaFacade.RequestProductListRunnable" visibility="public">
+<parameter name="p0" type="java.util.List&lt;tv.ouya.console.api.Purchasable&gt;">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.util.ArrayList&lt;tv.ouya.console.api.Product&gt;&gt;">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable" final="false" name="OuyaFacade.RequestPurchaseRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="OuyaFacade.RequestPurchaseRunnable" static="false" type="tv.ouya.console.api.OuyaFacade.RequestPurchaseRunnable" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.Purchasable">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;tv.ouya.console.api.Product&gt;">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable" final="false" name="OuyaFacade.RequestReceiptsRunnable" static="false" visibility=""/>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="OuyaIntent" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="OuyaIntent" static="false" type="tv.ouya.console.api.OuyaIntent" visibility="public">
+</constructor>
+<field deprecated="not deprecated" final="true" name="CATEGORY_APP" static="true" transient="false" type="java.lang.String" type-generic-aware="java.lang.String" value="&quot;ouya.intent.category.APP&quot;" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="CATEGORY_GAME" static="true" transient="false" type="java.lang.String" type-generic-aware="java.lang.String" value="&quot;ouya.intent.category.GAME&quot;" visibility="public" volatile="false">
+</field>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="OuyaResponseListener" static="false" visibility="public">
+<typeParameters>
+<typeParameter name="T"/>
+</typeParameters>
+<method abstract="true" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="T">
+</parameter>
+</method>
+</interface>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="Product" static="false" visibility="public">
+<implements name="android.os.Parcelable" name-generic-aware="android.os.Parcelable">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="Product" static="false" type="tv.ouya.console.api.Product" visibility="public">
+<parameter name="p0" type="org.json.JSONObject">
+</parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="Product" static="false" type="tv.ouya.console.api.Product" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="int">
+</parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="Product" static="false" type="tv.ouya.console.api.Product" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getIdentifier" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getName" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getPriceInCents" native="false" return="int" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="readFromJSONObject" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="org.json.JSONObject">
+</parameter>
+<exception name="JSONException" type="org.json.JSONException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setIdentifier" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setName" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setPriceInCents" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="writeToParcel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.Parcel">
+</parameter>
+<parameter name="p1" type="int">
+</parameter>
+</method>
+<field deprecated="not deprecated" final="true" name="CREATOR" static="true" transient="false" type="android.os.Parcelable.Creator" type-generic-aware="android.os.Parcelable.Creator&lt;tv.ouya.console.api.Product&gt;" visibility="public" volatile="false">
+</field>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="Product.1" static="true" visibility="">
+<implements name="android.os.Parcelable.Creator" name-generic-aware="android.os.Parcelable.Creator&lt;tv.ouya.console.api.Product&gt;">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="createFromParcel" native="false" return="tv.ouya.console.api.Product" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.Parcel">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="newArray" native="false" return="tv.ouya.console.api.Product[]" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="Purchasable" static="false" visibility="public">
+<implements name="android.os.Parcelable" name-generic-aware="android.os.Parcelable">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="Purchasable" static="false" type="tv.ouya.console.api.Purchasable" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getProductId" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="writeToParcel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.Parcel">
+</parameter>
+<parameter name="p1" type="int">
+</parameter>
+</method>
+<field deprecated="not deprecated" final="true" name="CREATOR" static="true" transient="false" type="android.os.Parcelable.Creator" type-generic-aware="android.os.Parcelable.Creator&lt;tv.ouya.console.api.Purchasable&gt;" visibility="public" volatile="false">
+</field>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="Purchasable.1" static="true" visibility="">
+<implements name="android.os.Parcelable.Creator" name-generic-aware="android.os.Parcelable.Creator&lt;tv.ouya.console.api.Purchasable&gt;">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="createFromParcel" native="false" return="tv.ouya.console.api.Purchasable" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.Parcel">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="newArray" native="false" return="tv.ouya.console.api.Purchasable[]" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="Receipt" static="false" visibility="public">
+<implements name="android.os.Parcelable" name-generic-aware="android.os.Parcelable">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="Receipt" static="false" type="tv.ouya.console.api.Receipt" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="int">
+</parameter>
+<parameter name="p2" type="java.util.Date">
+</parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="Receipt" static="false" type="tv.ouya.console.api.Receipt" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getIdentifier" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getPriceInCents" native="false" return="int" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getPurchaseDate" native="false" return="java.util.Date" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setDate" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setIdentifier" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setPriceInCents" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setPurchaseDate" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.util.Date">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="writeToParcel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.Parcel">
+</parameter>
+<parameter name="p1" type="int">
+</parameter>
+</method>
+<field deprecated="not deprecated" final="true" name="CREATOR" static="true" transient="false" type="android.os.Parcelable.Creator" type-generic-aware="android.os.Parcelable.Creator&lt;tv.ouya.console.api.Receipt&gt;" visibility="public" volatile="false">
+</field>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="Receipt.1" static="true" visibility="">
+<implements name="android.os.Parcelable.Creator" name-generic-aware="android.os.Parcelable.Creator&lt;tv.ouya.console.api.Receipt&gt;">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="createFromParcel" native="false" return="tv.ouya.console.api.Receipt" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.Parcel">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="newArray" native="false" return="tv.ouya.console.api.Receipt[]" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+</method>
+</class>
+<class abstract="true" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="RequestRunnable" static="false" visibility="public">
+<typeParameters>
+<typeParameter name="T"/>
+</typeParameters>
+<implements name="java.lang.Runnable" name-generic-aware="java.lang.Runnable">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="RequestRunnable" static="false" type="tv.ouya.console.api.RequestRunnable" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;T&gt;">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="run" native="false" return="void" static="false" synchronized="false" visibility="public">
+</method>
+<field deprecated="not deprecated" final="false" name="listener" static="false" transient="false" type="tv.ouya.console.api.OuyaResponseListener" type-generic-aware="tv.ouya.console.api.OuyaResponseListener&lt;T&gt;" visibility="protected" volatile="false">
+</field>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="StoreManager" static="false" visibility="public">
+<implements name="android.content.ServiceConnection" name-generic-aware="android.content.ServiceConnection">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="StoreManager" static="false" type="tv.ouya.console.api.StoreManager" visibility="protected">
+<parameter name="p0" type="android.content.Context">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="deprecated" final="false" name="bindRequestHasBeenMade" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInstance" native="false" return="tv.ouya.console.api.StoreManager" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.content.Context">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="init" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.content.Context">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="isInitialized" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onServiceConnected" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.content.ComponentName">
+</parameter>
+<parameter name="p1" type="android.os.IBinder">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onServiceDisconnected" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.content.ComponentName">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestAppDownloadUrl" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.String&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestAppInfo" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;tv.ouya.console.api.store.AppDetails&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestAppList" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.util.List&lt;tv.ouya.console.api.store.AppDescription&gt;&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestAppList" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;java.util.List&lt;tv.ouya.console.api.store.AppDescription&gt;&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestCreateNewUser" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.UserInfo">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.Void&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestDeregisterConsole" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.Void&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestDeveloperAppList" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;java.util.List&lt;tv.ouya.console.api.store.AppDescription&gt;&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestRegisterConsole" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.Void&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestResendEmail" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.Void&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestUpdateUserInfo" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.UserInfo">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.Void&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestUserInfo" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;tv.ouya.console.api.UserInfo&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="deprecated" final="false" name="setInstance" native="false" return="void" static="true" synchronized="false" visibility="protected">
+<parameter name="p0" type="tv.ouya.console.api.StoreManager">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="shutdown" native="false" return="void" static="false" synchronized="false" visibility="public">
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable&lt;java.lang.String&gt;" final="false" name="StoreManager.RequestAppDownloadUrlRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="StoreManager.RequestAppDownloadUrlRunnable" static="false" type="tv.ouya.console.api.StoreManager.RequestAppDownloadUrlRunnable" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.String&gt;">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable&lt;tv.ouya.console.api.store.AppDetails&gt;" final="false" name="StoreManager.RequestAppInfoRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="StoreManager.RequestAppInfoRunnable" static="false" type="tv.ouya.console.api.StoreManager.RequestAppInfoRunnable" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;tv.ouya.console.api.store.AppDetails&gt;">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable&lt;java.util.List&lt;tv.ouya.console.api.store.AppDescription&gt;&gt;" final="false" name="StoreManager.RequestAppsListForCategoryRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="StoreManager.RequestAppsListForCategoryRunnable" static="false" type="tv.ouya.console.api.StoreManager.RequestAppsListForCategoryRunnable" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.util.List&lt;tv.ouya.console.api.store.AppDescription&gt;&gt;">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable&lt;java.util.List&lt;tv.ouya.console.api.store.AppDescription&gt;&gt;" final="false" name="StoreManager.RequestAppsListRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="StoreManager.RequestAppsListRunnable" static="false" type="tv.ouya.console.api.StoreManager.RequestAppsListRunnable" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;java.util.List&lt;tv.ouya.console.api.store.AppDescription&gt;&gt;">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable&lt;java.lang.Void&gt;" final="false" name="StoreManager.RequestCreateNewUserRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="StoreManager.RequestCreateNewUserRunnable" static="false" type="tv.ouya.console.api.StoreManager.RequestCreateNewUserRunnable" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.UserInfo">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.Void&gt;">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable&lt;java.lang.Void&gt;" final="false" name="StoreManager.RequestDeregisterConsoleRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="StoreManager.RequestDeregisterConsoleRunnable" static="false" type="tv.ouya.console.api.StoreManager.RequestDeregisterConsoleRunnable" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.Void&gt;">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable&lt;java.util.List&lt;tv.ouya.console.api.store.AppDescription&gt;&gt;" final="false" name="StoreManager.RequestDeveloperAppsListRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="StoreManager.RequestDeveloperAppsListRunnable" static="false" type="tv.ouya.console.api.StoreManager.RequestDeveloperAppsListRunnable" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;java.util.List&lt;tv.ouya.console.api.store.AppDescription&gt;&gt;">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable&lt;java.lang.Void&gt;" final="false" name="StoreManager.RequestRegisterConsoleRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="StoreManager.RequestRegisterConsoleRunnable" static="false" type="tv.ouya.console.api.StoreManager.RequestRegisterConsoleRunnable" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.Void&gt;">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable&lt;java.lang.Void&gt;" final="false" name="StoreManager.RequestResendEmailRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="StoreManager.RequestResendEmailRunnable" static="false" type="tv.ouya.console.api.StoreManager.RequestResendEmailRunnable" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.Void&gt;">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable&lt;java.lang.Void&gt;" final="false" name="StoreManager.RequestUpdateUserInfoRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="StoreManager.RequestUpdateUserInfoRunnable" static="false" type="tv.ouya.console.api.StoreManager.RequestUpdateUserInfoRunnable" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.UserInfo">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.Void&gt;">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable&lt;tv.ouya.console.api.UserInfo&gt;" final="false" name="StoreManager.RequestUserInfoRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="StoreManager.RequestUserInfoRunnable" static="false" type="tv.ouya.console.api.StoreManager.RequestUserInfoRunnable" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;tv.ouya.console.api.UserInfo&gt;">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="UserInfo" static="false" visibility="public">
+<implements name="android.os.Parcelable" name-generic-aware="android.os.Parcelable">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="UserInfo" static="false" type="tv.ouya.console.api.UserInfo" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="UserInfo" static="false" type="tv.ouya.console.api.UserInfo" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="java.lang.String">
+</parameter>
+<parameter name="p3" type="java.lang.String">
+</parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="UserInfo" static="false" type="tv.ouya.console.api.UserInfo" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getEmail" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getPassword" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getPassword2" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getUsername" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setEmail" native="false" return="tv.ouya.console.api.UserInfo" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setPassword2" native="false" return="tv.ouya.console.api.UserInfo" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setPassword" native="false" return="tv.ouya.console.api.UserInfo" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setUsername" native="false" return="tv.ouya.console.api.UserInfo" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="writeToParcel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.Parcel">
+</parameter>
+<parameter name="p1" type="int">
+</parameter>
+</method>
+<field deprecated="not deprecated" final="true" name="CREATOR" static="true" transient="false" type="android.os.Parcelable.Creator" type-generic-aware="android.os.Parcelable.Creator&lt;tv.ouya.console.api.UserInfo&gt;" visibility="public" volatile="false">
+</field>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="UserInfo.1" static="true" visibility="">
+<implements name="android.os.Parcelable.Creator" name-generic-aware="android.os.Parcelable.Creator&lt;tv.ouya.console.api.UserInfo&gt;">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="createFromParcel" native="false" return="tv.ouya.console.api.UserInfo" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.Parcel">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="newArray" native="false" return="tv.ouya.console.api.UserInfo[]" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="UserManager" static="false" visibility="public">
+<implements name="android.content.ServiceConnection" name-generic-aware="android.content.ServiceConnection">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="UserManager" static="false" type="tv.ouya.console.api.UserManager" visibility="protected">
+<parameter name="p0" type="android.content.Context">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="deprecated" final="false" name="bindRequestHasBeenMade" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInstance" native="false" return="tv.ouya.console.api.UserManager" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.content.Context">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onServiceConnected" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.content.ComponentName">
+</parameter>
+<parameter name="p1" type="android.os.IBinder">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onServiceDisconnected" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.content.ComponentName">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestUserAddsAccount" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.app.Activity">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.Void&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestUsername" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.String&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="deprecated" final="false" name="setInstance" native="false" return="void" static="true" synchronized="false" visibility="protected">
+<parameter name="p0" type="tv.ouya.console.api.UserManager">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="shutdown" native="false" return="void" static="false" synchronized="false" visibility="public">
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="UserManager.AddAccountCallback" static="true" visibility="">
+<implements name="android.accounts.AccountManagerCallback" name-generic-aware="android.accounts.AccountManagerCallback&lt;android.os.Bundle&gt;">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="run" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.accounts.AccountManagerFuture&lt;android.os.Bundle&gt;">
+</parameter>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable" final="false" name="UserManager.RequestUsernameRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="UserManager.RequestUsernameRunnable" static="false" type="tv.ouya.console.api.UserManager.RequestUsernameRunnable" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.String&gt;">
+</parameter>
+</constructor>
+</class>
+</package>
+<package name="tv.ouya.console.api.store">
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="AppDescription" static="false" visibility="public">
+<implements name="android.os.Parcelable" name-generic-aware="android.os.Parcelable">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="AppDescription" static="false" type="tv.ouya.console.api.store.AppDescription" visibility="public">
+<parameter name="p0" type="org.json.JSONObject">
+</parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="AppDescription" static="false" type="tv.ouya.console.api.store.AppDescription" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="java.util.HashMap&lt;java.lang.String, tv.ouya.console.api.store.AppDescription.AppVersion&gt;">
+</parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="AppDescription" static="false" type="tv.ouya.console.api.store.AppDescription" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getLaunchIntent" native="false" return="android.content.Intent" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.content.Context">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getMostRecentVersionMainImageFullUrl" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getMostRecentVersionUploadedAt" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getMostRecentVersionUuid" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getTitle" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getUuid" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getVersions" native="false" return="java.util.HashMap&lt;java.lang.String, tv.ouya.console.api.store.AppDescription.AppVersion&gt;" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="readFromJSON" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="org.json.JSONObject">
+</parameter>
+<exception name="JSONException" type="org.json.JSONException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setTitle" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setUuid" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setVersions" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.util.HashMap&lt;java.lang.String, tv.ouya.console.api.store.AppDescription.AppVersion&gt;">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="writeToParcel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.Parcel">
+</parameter>
+<parameter name="p1" type="int">
+</parameter>
+</method>
+<field deprecated="not deprecated" final="true" name="CREATOR" static="true" transient="false" type="android.os.Parcelable.Creator" type-generic-aware="android.os.Parcelable.Creator&lt;tv.ouya.console.api.store.AppDescription&gt;" visibility="public" volatile="false">
+</field>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="AppDescription.1" static="true" visibility="">
+<implements name="android.os.Parcelable.Creator" name-generic-aware="android.os.Parcelable.Creator&lt;tv.ouya.console.api.store.AppDescription&gt;">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="createFromParcel" native="false" return="tv.ouya.console.api.store.AppDescription" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.Parcel">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="newArray" native="false" return="tv.ouya.console.api.store.AppDescription[]" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="AppDescription.AppVersion" static="true" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="AppDescription.AppVersion" static="false" type="tv.ouya.console.api.store.AppDescription.AppVersion" visibility="public">
+<parameter name="p0" type="org.json.JSONObject">
+</parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="AppDescription.AppVersion" static="false" type="tv.ouya.console.api.store.AppDescription.AppVersion" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="getMainImageFullUrl" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getUploadedAt" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getUploadedAtDate" native="false" return="java.util.Date" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getUuid" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="readFromJSON" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="org.json.JSONObject">
+</parameter>
+<exception name="JSONException" type="org.json.JSONException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setMainImageFullUrl" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setUploadedAt" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setUuid" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<field deprecated="not deprecated" final="true" name="EMPTY_VERSION" static="true" transient="false" type="tv.ouya.console.api.store.AppDescription.AppVersion" type-generic-aware="tv.ouya.console.api.store.AppDescription.AppVersion" visibility="public" volatile="false">
+</field>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="AppDetails" static="false" visibility="public">
+<implements name="android.os.Parcelable" name-generic-aware="android.os.Parcelable">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="AppDetails" static="false" type="tv.ouya.console.api.store.AppDetails" visibility="public">
+<parameter name="p0" type="org.json.JSONObject">
+</parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="AppDetails" static="false" type="tv.ouya.console.api.store.AppDetails" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="java.lang.String">
+</parameter>
+<parameter name="p3" type="java.lang.String">
+</parameter>
+<parameter name="p4" type="java.lang.String">
+</parameter>
+<parameter name="p5" type="java.lang.String">
+</parameter>
+<parameter name="p6" type="java.lang.String">
+</parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="AppDetails" static="false" type="tv.ouya.console.api.store.AppDetails" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getDescription" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getMainImageFullUrl" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getSupportEmailAddress" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getSupportPhone" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getTitle" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getUuid" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getWebsite" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="readFromJSON" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="org.json.JSONObject">
+</parameter>
+<exception name="JSONException" type="org.json.JSONException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setDescription" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setMainImageFullUrl" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setSupportEmailAddress" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setSupportPhone" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setTitle" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setUuid" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setWebsite" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="writeToParcel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.Parcel">
+</parameter>
+<parameter name="p1" type="int">
+</parameter>
+</method>
+<field deprecated="not deprecated" final="true" name="CREATOR" static="true" transient="false" type="android.os.Parcelable.Creator" type-generic-aware="android.os.Parcelable.Creator&lt;tv.ouya.console.api.store.AppDetails&gt;" visibility="public" volatile="false">
+</field>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="AppDetails.1" static="true" visibility="">
+<implements name="android.os.Parcelable.Creator" name-generic-aware="android.os.Parcelable.Creator&lt;tv.ouya.console.api.store.AppDetails&gt;">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="createFromParcel" native="false" return="tv.ouya.console.api.store.AppDetails" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.Parcel">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="newArray" native="false" return="tv.ouya.console.api.store.AppDetails[]" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+</method>
+</class>
+</package>
+<package name="tv.ouya.console.iap.api">
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="true" name="BuildConfig" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="BuildConfig" static="false" type="tv.ouya.console.iap.api.BuildConfig" visibility="public">
+</constructor>
+<field deprecated="not deprecated" final="true" name="DEBUG" static="true" transient="false" type="boolean" type-generic-aware="boolean" value="false" visibility="public" volatile="false">
+</field>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="true" name="R" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="R" static="false" type="tv.ouya.console.iap.api.R" visibility="public">
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="true" name="R.attr" static="true" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="R.attr" static="false" type="tv.ouya.console.iap.api.R.attr" visibility="public">
+</constructor>
+<field deprecated="not deprecated" final="false" name="hollow" static="true" transient="false" type="int" type-generic-aware="int" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="false" name="typeface" static="true" transient="false" type="int" type-generic-aware="int" visibility="public" volatile="false">
+</field>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="true" name="R.drawable" static="true" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="R.drawable" static="false" type="tv.ouya.console.iap.api.R.drawable" visibility="public">
+</constructor>
+<field deprecated="not deprecated" final="false" name="icon" static="true" transient="false" type="int" type-generic-aware="int" visibility="public" volatile="false">
+</field>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="true" name="R.style" static="true" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="R.style" static="false" type="tv.ouya.console.iap.api.R.style" visibility="public">
+</constructor>
+<field deprecated="not deprecated" final="false" name="fill" static="true" transient="false" type="int" type-generic-aware="int" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="false" name="wrap" static="true" transient="false" type="int" type-generic-aware="int" visibility="public" volatile="false">
+</field>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="true" name="R.styleable" static="true" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="R.styleable" static="false" type="tv.ouya.console.iap.api.R.styleable" visibility="public">
+</constructor>
+<field deprecated="not deprecated" final="true" name="OuyaTextView" static="true" transient="false" type="int[]" type-generic-aware="int[]" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="OuyaTextView_hollow" static="true" transient="false" type="int" type-generic-aware="int" value="1" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="OuyaTextView_typeface" static="true" transient="false" type="int" type-generic-aware="int" value="0" visibility="public" volatile="false">
+</field>
+</class>
+</package>
+<package name="tv.ouya.console.internal">
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.internal.IAppDescriptionListListener.Stub" extends-generic-aware="tv.ouya.console.internal.IAppDescriptionListListener.Stub" final="false" name="AppDescriptionListListenerBinder" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="AppDescriptionListListenerBinder" static="false" type="tv.ouya.console.internal.AppDescriptionListListenerBinder" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;java.util.List&lt;tv.ouya.console.api.store.AppDescription&gt;&gt;">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.util.List&lt;tv.ouya.console.api.store.AppDescription&gt;">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.internal.IAppDetailsListener.Stub" extends-generic-aware="tv.ouya.console.internal.IAppDetailsListener.Stub" final="false" name="AppDetailsListenerBinder" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="AppDetailsListenerBinder" static="false" type="tv.ouya.console.internal.AppDetailsListenerBinder" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;tv.ouya.console.api.store.AppDetails&gt;">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.store.AppDetails">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="IAppDescriptionListListener" static="false" visibility="public">
+<implements name="android.os.IInterface" name-generic-aware="android.os.IInterface">
+</implements>
+<method abstract="true" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.util.List&lt;tv.ouya.console.api.store.AppDescription&gt;">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</interface>
+<class abstract="true" deprecated="not deprecated" extends="android.os.Binder" extends-generic-aware="android.os.Binder" final="false" name="IAppDescriptionListListener.Stub" static="true" visibility="public">
+<implements name="tv.ouya.console.internal.IAppDescriptionListListener" name-generic-aware="tv.ouya.console.internal.IAppDescriptionListListener">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="IAppDescriptionListListener.Stub" static="false" type="tv.ouya.console.internal.IAppDescriptionListListener.Stub" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="asInterface" native="false" return="tv.ouya.console.internal.IAppDescriptionListListener" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.IBinder">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onTransact" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="android.os.Parcel">
+</parameter>
+<parameter name="p2" type="android.os.Parcel">
+</parameter>
+<parameter name="p3" type="int">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="IAppDescriptionListListener.Stub.Proxy" static="true" visibility="">
+<implements name="tv.ouya.console.internal.IAppDescriptionListListener" name-generic-aware="tv.ouya.console.internal.IAppDescriptionListListener">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInterfaceDescriptor" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.util.List&lt;tv.ouya.console.api.store.AppDescription&gt;">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="IAppDetailsListListener" static="false" visibility="public">
+<implements name="android.os.IInterface" name-generic-aware="android.os.IInterface">
+</implements>
+<method abstract="true" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.util.List&lt;tv.ouya.console.api.store.AppDetails&gt;">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</interface>
+<class abstract="true" deprecated="not deprecated" extends="android.os.Binder" extends-generic-aware="android.os.Binder" final="false" name="IAppDetailsListListener.Stub" static="true" visibility="public">
+<implements name="tv.ouya.console.internal.IAppDetailsListListener" name-generic-aware="tv.ouya.console.internal.IAppDetailsListListener">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="IAppDetailsListListener.Stub" static="false" type="tv.ouya.console.internal.IAppDetailsListListener.Stub" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="asInterface" native="false" return="tv.ouya.console.internal.IAppDetailsListListener" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.IBinder">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onTransact" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="android.os.Parcel">
+</parameter>
+<parameter name="p2" type="android.os.Parcel">
+</parameter>
+<parameter name="p3" type="int">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="IAppDetailsListListener.Stub.Proxy" static="true" visibility="">
+<implements name="tv.ouya.console.internal.IAppDetailsListListener" name-generic-aware="tv.ouya.console.internal.IAppDetailsListListener">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInterfaceDescriptor" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.util.List&lt;tv.ouya.console.api.store.AppDetails&gt;">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="IAppDetailsListener" static="false" visibility="public">
+<implements name="android.os.IInterface" name-generic-aware="android.os.IInterface">
+</implements>
+<method abstract="true" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.store.AppDetails">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</interface>
+<class abstract="true" deprecated="not deprecated" extends="android.os.Binder" extends-generic-aware="android.os.Binder" final="false" name="IAppDetailsListener.Stub" static="true" visibility="public">
+<implements name="tv.ouya.console.internal.IAppDetailsListener" name-generic-aware="tv.ouya.console.internal.IAppDetailsListener">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="IAppDetailsListener.Stub" static="false" type="tv.ouya.console.internal.IAppDetailsListener.Stub" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="asInterface" native="false" return="tv.ouya.console.internal.IAppDetailsListener" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.IBinder">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onTransact" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="android.os.Parcel">
+</parameter>
+<parameter name="p2" type="android.os.Parcel">
+</parameter>
+<parameter name="p3" type="int">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="IAppDetailsListener.Stub.Proxy" static="true" visibility="">
+<implements name="tv.ouya.console.internal.IAppDetailsListener" name-generic-aware="tv.ouya.console.internal.IAppDetailsListener">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInterfaceDescriptor" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.store.AppDetails">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="IIapServiceDefinition" static="false" visibility="public">
+<implements name="android.os.IInterface" name-generic-aware="android.os.IInterface">
+</implements>
+<method abstract="true" deprecated="not deprecated" final="false" name="isDebugBuild" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestGamerUuid" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IStringListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestProductList" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.util.List&lt;tv.ouya.console.api.Purchasable&gt;">
+</parameter>
+<parameter name="p2" type="tv.ouya.console.internal.IProductListListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestPurchase" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.Purchasable">
+</parameter>
+<parameter name="p2" type="tv.ouya.console.internal.IProductListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestReceipts" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IStringListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</interface>
+<class abstract="true" deprecated="not deprecated" extends="android.os.Binder" extends-generic-aware="android.os.Binder" final="false" name="IIapServiceDefinition.Stub" static="true" visibility="public">
+<implements name="tv.ouya.console.internal.IIapServiceDefinition" name-generic-aware="tv.ouya.console.internal.IIapServiceDefinition">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="IIapServiceDefinition.Stub" static="false" type="tv.ouya.console.internal.IIapServiceDefinition.Stub" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="asInterface" native="false" return="tv.ouya.console.internal.IIapServiceDefinition" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.IBinder">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onTransact" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="android.os.Parcel">
+</parameter>
+<parameter name="p2" type="android.os.Parcel">
+</parameter>
+<parameter name="p3" type="int">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="IIapServiceDefinition.Stub.Proxy" static="true" visibility="">
+<implements name="tv.ouya.console.internal.IIapServiceDefinition" name-generic-aware="tv.ouya.console.internal.IIapServiceDefinition">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInterfaceDescriptor" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="isDebugBuild" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestGamerUuid" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IStringListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestProductList" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.util.List&lt;tv.ouya.console.api.Purchasable&gt;">
+</parameter>
+<parameter name="p2" type="tv.ouya.console.internal.IProductListListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestPurchase" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.Purchasable">
+</parameter>
+<parameter name="p2" type="tv.ouya.console.internal.IProductListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestReceipts" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IStringListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="IProductListListener" static="false" visibility="public">
+<implements name="android.os.IInterface" name-generic-aware="android.os.IInterface">
+</implements>
+<method abstract="true" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.util.List&lt;tv.ouya.console.api.Product&gt;">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</interface>
+<class abstract="true" deprecated="not deprecated" extends="android.os.Binder" extends-generic-aware="android.os.Binder" final="false" name="IProductListListener.Stub" static="true" visibility="public">
+<implements name="tv.ouya.console.internal.IProductListListener" name-generic-aware="tv.ouya.console.internal.IProductListListener">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="IProductListListener.Stub" static="false" type="tv.ouya.console.internal.IProductListListener.Stub" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="asInterface" native="false" return="tv.ouya.console.internal.IProductListListener" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.IBinder">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onTransact" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="android.os.Parcel">
+</parameter>
+<parameter name="p2" type="android.os.Parcel">
+</parameter>
+<parameter name="p3" type="int">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="IProductListListener.Stub.Proxy" static="true" visibility="">
+<implements name="tv.ouya.console.internal.IProductListListener" name-generic-aware="tv.ouya.console.internal.IProductListListener">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInterfaceDescriptor" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.util.List&lt;tv.ouya.console.api.Product&gt;">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="IProductListener" static="false" visibility="public">
+<implements name="android.os.IInterface" name-generic-aware="android.os.IInterface">
+</implements>
+<method abstract="true" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.Product">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</interface>
+<class abstract="true" deprecated="not deprecated" extends="android.os.Binder" extends-generic-aware="android.os.Binder" final="false" name="IProductListener.Stub" static="true" visibility="public">
+<implements name="tv.ouya.console.internal.IProductListener" name-generic-aware="tv.ouya.console.internal.IProductListener">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="IProductListener.Stub" static="false" type="tv.ouya.console.internal.IProductListener.Stub" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="asInterface" native="false" return="tv.ouya.console.internal.IProductListener" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.IBinder">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onTransact" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="android.os.Parcel">
+</parameter>
+<parameter name="p2" type="android.os.Parcel">
+</parameter>
+<parameter name="p3" type="int">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="IProductListener.Stub.Proxy" static="true" visibility="">
+<implements name="tv.ouya.console.internal.IProductListener" name-generic-aware="tv.ouya.console.internal.IProductListener">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInterfaceDescriptor" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.Product">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="IStoreServiceDefinition" static="false" visibility="public">
+<implements name="android.os.IInterface" name-generic-aware="android.os.IInterface">
+</implements>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestAppDownloadUrl" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IStringListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestAppInfo" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IAppDetailsListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestAppList" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.internal.IAppDescriptionListListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestAppListForCategory" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IAppDescriptionListListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestCreateNewUser" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.UserInfo">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IVoidListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestDeregisterConsole" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IVoidListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestDeveloperAppList" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.internal.IAppDescriptionListListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestRegisterConsole" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.internal.IVoidListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestResendEmail" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IVoidListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestUpdateUserInfo" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.UserInfo">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IVoidListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestUserInfo" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.internal.IUserInfoListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</interface>
+<class abstract="true" deprecated="not deprecated" extends="android.os.Binder" extends-generic-aware="android.os.Binder" final="false" name="IStoreServiceDefinition.Stub" static="true" visibility="public">
+<implements name="tv.ouya.console.internal.IStoreServiceDefinition" name-generic-aware="tv.ouya.console.internal.IStoreServiceDefinition">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="IStoreServiceDefinition.Stub" static="false" type="tv.ouya.console.internal.IStoreServiceDefinition.Stub" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="asInterface" native="false" return="tv.ouya.console.internal.IStoreServiceDefinition" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.IBinder">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onTransact" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="android.os.Parcel">
+</parameter>
+<parameter name="p2" type="android.os.Parcel">
+</parameter>
+<parameter name="p3" type="int">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="IStoreServiceDefinition.Stub.Proxy" static="true" visibility="">
+<implements name="tv.ouya.console.internal.IStoreServiceDefinition" name-generic-aware="tv.ouya.console.internal.IStoreServiceDefinition">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInterfaceDescriptor" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestAppDownloadUrl" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IStringListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestAppInfo" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IAppDetailsListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestAppList" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.internal.IAppDescriptionListListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestAppListForCategory" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IAppDescriptionListListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestCreateNewUser" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.UserInfo">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IVoidListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestDeregisterConsole" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IVoidListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestDeveloperAppList" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.internal.IAppDescriptionListListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestRegisterConsole" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.internal.IVoidListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestResendEmail" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IVoidListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestUpdateUserInfo" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.UserInfo">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IVoidListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestUserInfo" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.internal.IUserInfoListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="IStringListener" static="false" visibility="public">
+<implements name="android.os.IInterface" name-generic-aware="android.os.IInterface">
+</implements>
+<method abstract="true" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</interface>
+<class abstract="true" deprecated="not deprecated" extends="android.os.Binder" extends-generic-aware="android.os.Binder" final="false" name="IStringListener.Stub" static="true" visibility="public">
+<implements name="tv.ouya.console.internal.IStringListener" name-generic-aware="tv.ouya.console.internal.IStringListener">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="IStringListener.Stub" static="false" type="tv.ouya.console.internal.IStringListener.Stub" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="asInterface" native="false" return="tv.ouya.console.internal.IStringListener" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.IBinder">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onTransact" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="android.os.Parcel">
+</parameter>
+<parameter name="p2" type="android.os.Parcel">
+</parameter>
+<parameter name="p3" type="int">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="IStringListener.Stub.Proxy" static="true" visibility="">
+<implements name="tv.ouya.console.internal.IStringListener" name-generic-aware="tv.ouya.console.internal.IStringListener">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInterfaceDescriptor" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="IUserInfoListener" static="false" visibility="public">
+<implements name="android.os.IInterface" name-generic-aware="android.os.IInterface">
+</implements>
+<method abstract="true" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.UserInfo">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</interface>
+<class abstract="true" deprecated="not deprecated" extends="android.os.Binder" extends-generic-aware="android.os.Binder" final="false" name="IUserInfoListener.Stub" static="true" visibility="public">
+<implements name="tv.ouya.console.internal.IUserInfoListener" name-generic-aware="tv.ouya.console.internal.IUserInfoListener">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="IUserInfoListener.Stub" static="false" type="tv.ouya.console.internal.IUserInfoListener.Stub" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="asInterface" native="false" return="tv.ouya.console.internal.IUserInfoListener" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.IBinder">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onTransact" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="android.os.Parcel">
+</parameter>
+<parameter name="p2" type="android.os.Parcel">
+</parameter>
+<parameter name="p3" type="int">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="IUserInfoListener.Stub.Proxy" static="true" visibility="">
+<implements name="tv.ouya.console.internal.IUserInfoListener" name-generic-aware="tv.ouya.console.internal.IUserInfoListener">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInterfaceDescriptor" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.UserInfo">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="IUserServiceDefinition" static="false" visibility="public">
+<implements name="android.os.IInterface" name-generic-aware="android.os.IInterface">
+</implements>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestUsername" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IStringListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</interface>
+<class abstract="true" deprecated="not deprecated" extends="android.os.Binder" extends-generic-aware="android.os.Binder" final="false" name="IUserServiceDefinition.Stub" static="true" visibility="public">
+<implements name="tv.ouya.console.internal.IUserServiceDefinition" name-generic-aware="tv.ouya.console.internal.IUserServiceDefinition">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="IUserServiceDefinition.Stub" static="false" type="tv.ouya.console.internal.IUserServiceDefinition.Stub" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="asInterface" native="false" return="tv.ouya.console.internal.IUserServiceDefinition" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.IBinder">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onTransact" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="android.os.Parcel">
+</parameter>
+<parameter name="p2" type="android.os.Parcel">
+</parameter>
+<parameter name="p3" type="int">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="IUserServiceDefinition.Stub.Proxy" static="true" visibility="">
+<implements name="tv.ouya.console.internal.IUserServiceDefinition" name-generic-aware="tv.ouya.console.internal.IUserServiceDefinition">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInterfaceDescriptor" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestUsername" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IStringListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="IVoidListener" static="false" visibility="public">
+<implements name="android.os.IInterface" name-generic-aware="android.os.IInterface">
+</implements>
+<method abstract="true" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</interface>
+<class abstract="true" deprecated="not deprecated" extends="android.os.Binder" extends-generic-aware="android.os.Binder" final="false" name="IVoidListener.Stub" static="true" visibility="public">
+<implements name="tv.ouya.console.internal.IVoidListener" name-generic-aware="tv.ouya.console.internal.IVoidListener">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="IVoidListener.Stub" static="false" type="tv.ouya.console.internal.IVoidListener.Stub" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="asInterface" native="false" return="tv.ouya.console.internal.IVoidListener" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.os.IBinder">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onTransact" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="android.os.Parcel">
+</parameter>
+<parameter name="p2" type="android.os.Parcel">
+</parameter>
+<parameter name="p3" type="int">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="IVoidListener.Stub.Proxy" static="true" visibility="">
+<implements name="tv.ouya.console.internal.IVoidListener" name-generic-aware="tv.ouya.console.internal.IVoidListener">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInterfaceDescriptor" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="ListenerBinderHelper" static="false" visibility="public">
+<typeParameters>
+<typeParameter name="T"/>
+</typeParameters>
+<constructor deprecated="not deprecated" final="false" name="ListenerBinderHelper" static="false" type="tv.ouya.console.internal.ListenerBinderHelper" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;T&gt;">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="T">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="ListenerBinderHelper.1" static="false" visibility="">
+<implements name="java.lang.Runnable" name-generic-aware="java.lang.Runnable">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="run" native="false" return="void" static="false" synchronized="false" visibility="public">
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="ListenerBinderHelper.2" static="false" visibility="">
+<implements name="java.lang.Runnable" name-generic-aware="java.lang.Runnable">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="run" native="false" return="void" static="false" synchronized="false" visibility="public">
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="ListenerBinderHelper.3" static="false" visibility="">
+<implements name="java.lang.Runnable" name-generic-aware="java.lang.Runnable">
+</implements>
+<method abstract="false" deprecated="not deprecated" final="false" name="run" native="false" return="void" static="false" synchronized="false" visibility="public">
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.internal.IProductListListener.Stub" extends-generic-aware="tv.ouya.console.internal.IProductListListener.Stub" final="false" name="ProductListListenerBinder" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="ProductListListenerBinder" static="false" type="tv.ouya.console.internal.ProductListListenerBinder" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;java.util.List&lt;tv.ouya.console.api.Product&gt;&gt;">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.util.List&lt;tv.ouya.console.api.Product&gt;">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.internal.IProductListener.Stub" extends-generic-aware="tv.ouya.console.internal.IProductListener.Stub" final="false" name="ProductListenerBinder" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="ProductListenerBinder" static="false" type="tv.ouya.console.internal.ProductListenerBinder" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;tv.ouya.console.api.Product&gt;">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.Product">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.internal.IStringListener.Stub" extends-generic-aware="tv.ouya.console.internal.IStringListener.Stub" final="false" name="StringListenerBinder" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="StringListenerBinder" static="false" type="tv.ouya.console.internal.StringListenerBinder" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.String&gt;">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.internal.IUserInfoListener.Stub" extends-generic-aware="tv.ouya.console.internal.IUserInfoListener.Stub" final="false" name="UserInfoListenerBinder" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="UserInfoListenerBinder" static="false" type="tv.ouya.console.internal.UserInfoListenerBinder" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;tv.ouya.console.api.UserInfo&gt;">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.UserInfo">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.internal.IVoidListener.Stub" extends-generic-aware="tv.ouya.console.internal.IVoidListener.Stub" final="false" name="VoidListenerBinder" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="VoidListenerBinder" static="false" type="tv.ouya.console.internal.VoidListenerBinder" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.Void&gt;">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="onCancel" native="false" return="void" static="false" synchronized="false" visibility="public">
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="android.os.Bundle">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+</class>
+</package>
+<package name="tv.ouya.console.internal.util">
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="CurrentTime" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="CurrentTime" static="false" type="tv.ouya.console.internal.util.CurrentTime" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="currentTimeMillis" native="false" return="long" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInstance" native="false" return="tv.ouya.console.internal.util.CurrentTime" static="true" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="deprecated" final="false" name="setInstance" native="false" return="void" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.internal.util.CurrentTime">
+</parameter>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.text.SimpleDateFormat" extends-generic-aware="java.text.SimpleDateFormat" final="false" name="OuyaDateParser" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="OuyaDateParser" static="false" type="tv.ouya.console.internal.util.OuyaDateParser" visibility="public">
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="Strings" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="Strings" static="false" type="tv.ouya.console.internal.util.Strings" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="asStream" native="false" return="java.io.InputStream" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="formatDollarAmount" native="false" return="java.lang.String" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="fromFile" native="false" return="java.lang.String" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="fromStream" native="false" return="java.lang.String" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="java.io.InputStream">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="hasLength" native="false" return="boolean" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="isEmptyOrWhitespace" native="false" return="boolean" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="join" native="false" return="java.lang.String" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.lang.Object...">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="join" native="false" return="java.lang.String" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.util.Collection">
+</parameter>
+</method>
+</class>
+</package>
+<package name="tv.ouya.console.util">
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="SerialNumber" static="false" visibility="public">
+<constructor deprecated="deprecated" final="false" name="SerialNumber" static="false" type="tv.ouya.console.util.SerialNumber" visibility="public">
+<parameter name="p0" type="android.content.Context">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInstance" native="false" return="tv.ouya.console.util.SerialNumber" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.content.Context">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getSerialNumber" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="deprecated" final="false" name="setInstance" native="false" return="void" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.util.SerialNumber">
+</parameter>
+</method>
+<field deprecated="not deprecated" final="true" name="SERIAL" static="true" transient="false" type="java.lang.String" type-generic-aware="java.lang.String" value="&quot;serial&quot;" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="SERIAL_PREFS" static="true" transient="false" type="java.lang.String" type-generic-aware="java.lang.String" value="&quot;serial_prefs&quot;" visibility="public" volatile="false">
+</field>
+</class>
+</package>
+<package name="tv.ouya.console.util.http">
+<class abstract="true" deprecated="not deprecated" extends="tv.ouya.console.util.http.BaseApiRequest" extends-generic-aware="tv.ouya.console.util.http.BaseApiRequest" final="false" name="ApiDeleteRequest" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="ApiDeleteRequest" static="false" type="tv.ouya.console.util.http.ApiDeleteRequest" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="execute" native="false" return="tv.ouya.console.util.http.Http.Response" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.util.http.Http">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="URISyntaxException" type="java.net.URISyntaxException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="ApiGateway" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="ApiGateway" static="false" type="tv.ouya.console.util.http.ApiGateway" visibility="protected">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="dispatch" native="false" return="void" static="false" synchronized="false" visibility="protected">
+<parameter name="p0" type="tv.ouya.console.util.http.ApiResponse">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.util.http.ApiResponseCallbacks">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getInstance" native="false" return="tv.ouya.console.util.http.ApiGateway" static="true" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="makeRequest" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.util.http.ApiRequest">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.util.http.ApiResponseCallbacks">
+</parameter>
+</method>
+<method abstract="false" deprecated="deprecated" final="false" name="setInstance" native="false" return="void" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.util.http.ApiGateway">
+</parameter>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="android.os.AsyncTask" extends-generic-aware="android.os.AsyncTask&lt;tv.ouya.console.util.http.ApiRequest, java.lang.Void, tv.ouya.console.util.http.ApiResponse&gt;" final="false" name="ApiGateway.RemoteCallTask" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="ApiGateway.RemoteCallTask" static="false" type="tv.ouya.console.util.http.ApiGateway.RemoteCallTask" visibility="public">
+<parameter name="p1" type="tv.ouya.console.util.http.ApiResponseCallbacks">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="doInBackground" native="false" return="java.lang.Object" static="false" synchronized="false" visibility="protected">
+<parameter name="p0" type="java.lang.Object[]">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="doInBackground" native="false" return="tv.ouya.console.util.http.ApiResponse" static="false" synchronized="false" visibility="protected">
+<parameter name="p0" type="tv.ouya.console.util.http.ApiRequest...">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="onPostExecute" native="false" return="void" static="false" synchronized="false" visibility="protected">
+<parameter name="p0" type="tv.ouya.console.util.http.ApiResponse">
+</parameter>
+</method>
+</class>
+<class abstract="true" deprecated="not deprecated" extends="tv.ouya.console.util.http.BaseApiRequest" extends-generic-aware="tv.ouya.console.util.http.BaseApiRequest" final="false" name="ApiGetRequest" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="ApiGetRequest" static="false" type="tv.ouya.console.util.http.ApiGetRequest" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="execute" native="false" return="tv.ouya.console.util.http.Http.Response" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.util.http.Http">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="URISyntaxException" type="java.net.URISyntaxException">
+</exception>
+</method>
+</class>
+<class abstract="true" deprecated="not deprecated" extends="tv.ouya.console.util.http.FormEncodedRequest" extends-generic-aware="tv.ouya.console.util.http.FormEncodedRequest" final="false" name="ApiPostRequest" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="ApiPostRequest" static="false" type="tv.ouya.console.util.http.ApiPostRequest" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="execute" native="false" return="tv.ouya.console.util.http.Http.Response" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.util.http.Http">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="URISyntaxException" type="java.net.URISyntaxException">
+</exception>
+</method>
+</class>
+<class abstract="true" deprecated="not deprecated" extends="tv.ouya.console.util.http.FormEncodedRequest" extends-generic-aware="tv.ouya.console.util.http.FormEncodedRequest" final="false" name="ApiPutRequest" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="ApiPutRequest" static="false" type="tv.ouya.console.util.http.ApiPutRequest" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="execute" native="false" return="tv.ouya.console.util.http.Http.Response" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.util.http.Http">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="URISyntaxException" type="java.net.URISyntaxException">
+</exception>
+</method>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="ApiRequest" static="false" visibility="public">
+<method abstract="true" deprecated="not deprecated" final="false" name="abortGetRequest" native="false" return="void" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="constructApiResponse" native="false" return="tv.ouya.console.util.http.ApiResponse" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.io.InputStream">
+</parameter>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="execute" native="false" return="tv.ouya.console.util.http.Http.Response" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.util.http.Http">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="URISyntaxException" type="java.net.URISyntaxException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="getHeaders" native="false" return="java.util.Map&lt;java.lang.String, java.lang.String&gt;" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="getHttpGet" native="false" return="org.apache.http.client.methods.HttpGet" static="false" synchronized="false" visibility="public">
+<exception name="URISyntaxException" type="java.net.URISyntaxException">
+</exception>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="getPassword" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="getRequestBody" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="getUrlParameters" native="false" return="java.util.SortedMap&lt;java.lang.String, java.lang.String&gt;" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="getUrlPath" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="getUrlString" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="getUsername" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="setBaseUrl" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+</interface>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="ApiResponse" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="ApiResponse" static="false" type="tv.ouya.console.util.http.ApiResponse" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.io.InputStream">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="getResponseBody" native="false" return="java.io.InputStream" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getResponseBodyAsString" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getResponseCode" native="false" return="int" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="isSuccess" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="isUnauthorized" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="prefetch" native="false" return="tv.ouya.console.util.http.ApiResponse" static="false" synchronized="false" visibility="public">
+</method>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="ApiResponseCallbacks" static="false" visibility="public">
+<method abstract="true" deprecated="not deprecated" final="false" name="onComplete" native="false" return="void" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onFailure" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.util.http.ApiResponse">
+</parameter>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="onSuccess" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.util.http.ApiResponse">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+</interface>
+<class abstract="true" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="BaseApiRequest" static="false" visibility="public">
+<implements name="tv.ouya.console.util.http.ApiRequest" name-generic-aware="tv.ouya.console.util.http.ApiRequest">
+</implements>
+<constructor deprecated="not deprecated" final="false" name="BaseApiRequest" static="false" type="tv.ouya.console.util.http.BaseApiRequest" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="abortGetRequest" native="false" return="void" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="constructApiResponse" native="false" return="tv.ouya.console.util.http.ApiResponse" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.io.InputStream">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getHeaders" native="false" return="java.util.Map&lt;java.lang.String, java.lang.String&gt;" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getHttpGet" native="false" return="org.apache.http.client.methods.HttpGet" static="false" synchronized="false" visibility="public">
+<exception name="URISyntaxException" type="java.net.URISyntaxException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getPassword" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getRequestBody" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getUrlParameters" native="false" return="java.util.SortedMap&lt;java.lang.String, java.lang.String&gt;" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getUrlString" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getUsername" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="reset" native="false" return="void" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setBaseUrl" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+<field deprecated="not deprecated" final="false" name="baseUrl" static="false" transient="false" type="java.lang.String" type-generic-aware="java.lang.String" visibility="protected" volatile="false">
+</field>
+<field deprecated="not deprecated" final="false" name="httpGet" static="false" transient="false" type="org.apache.http.client.methods.HttpGet" type-generic-aware="org.apache.http.client.methods.HttpGet" visibility="protected" volatile="false">
+</field>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Thread" extends-generic-aware="java.lang.Thread" final="false" name="BaseApiRequest.1" static="false" visibility=""/>
+<class abstract="true" deprecated="not deprecated" extends="tv.ouya.console.util.http.BaseApiRequest" extends-generic-aware="tv.ouya.console.util.http.BaseApiRequest" final="false" name="FormEncodedRequest" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="FormEncodedRequest" static="false" type="tv.ouya.console.util.http.FormEncodedRequest" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="addFormParameter" native="false" return="void" static="false" synchronized="false" visibility="protected">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+</method>
+<method abstract="true" deprecated="not deprecated" final="false" name="execute" native="false" return="tv.ouya.console.util.http.Http.Response" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.util.http.Http">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="URISyntaxException" type="java.net.URISyntaxException">
+</exception>
+</method>
+<field deprecated="not deprecated" final="true" name="AUTH_TOKEN" static="true" transient="false" type="java.lang.String" type-generic-aware="java.lang.String" value="&quot;auth_token&quot;" visibility="public" volatile="false">
+</field>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="FormEncodedRequest.FormParameter" static="true" visibility=""/>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="Http" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="Http" static="false" type="tv.ouya.console.util.http.Http" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="delete" native="false" return="tv.ouya.console.util.http.Http.Response" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
+</parameter>
+<parameter name="p2" type="java.lang.String">
+</parameter>
+<parameter name="p3" type="java.lang.String">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="URISyntaxException" type="java.net.URISyntaxException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="get" native="false" return="tv.ouya.console.util.http.Http.Response" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
+</parameter>
+<parameter name="p2" type="java.lang.String">
+</parameter>
+<parameter name="p3" type="java.lang.String">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="URISyntaxException" type="java.net.URISyntaxException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="get" native="false" return="tv.ouya.console.util.http.Http.Response" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="org.apache.http.client.methods.HttpGet">
+</parameter>
+<parameter name="p1" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
+</parameter>
+<parameter name="p2" type="java.lang.String">
+</parameter>
+<parameter name="p3" type="java.lang.String">
+</parameter>
+<exception name="URISyntaxException" type="java.net.URISyntaxException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="post" native="false" return="tv.ouya.console.util.http.Http.Response" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
+</parameter>
+<parameter name="p2" type="java.lang.String">
+</parameter>
+<parameter name="p3" type="java.lang.String">
+</parameter>
+<parameter name="p4" type="java.lang.String">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="URISyntaxException" type="java.net.URISyntaxException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="put" native="false" return="tv.ouya.console.util.http.Http.Response" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
+</parameter>
+<parameter name="p2" type="java.lang.String">
+</parameter>
+<parameter name="p3" type="java.lang.String">
+</parameter>
+<parameter name="p4" type="java.lang.String">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+<exception name="URISyntaxException" type="java.net.URISyntaxException">
+</exception>
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="Http.Response" static="true" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="Http.Response" static="false" type="tv.ouya.console.util.http.Http.Response" visibility="public">
+<parameter name="p0" type="org.apache.http.HttpResponse">
+</parameter>
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="getResponseBody" native="false" return="java.io.InputStream" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getStatusCode" native="false" return="int" static="false" synchronized="false" visibility="public">
+</method>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.util.http.ApiResponse" extends-generic-aware="tv.ouya.console.util.http.ApiResponse" final="false" name="StreamApiResponse" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="StreamApiResponse" static="false" type="tv.ouya.console.util.http.StreamApiResponse" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.io.InputStream">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.util.http.ApiResponse" extends-generic-aware="tv.ouya.console.util.http.ApiResponse" final="false" name="StringApiResponse" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="StringApiResponse" static="false" type="tv.ouya.console.util.http.StringApiResponse" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+<parameter name="p1" type="java.io.InputStream">
+</parameter>
+</constructor>
+</class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.util.http.Http" extends-generic-aware="tv.ouya.console.util.http.Http" final="false" name="TestHttp" static="false" visibility="public">
+<constructor deprecated="not deprecated" final="false" name="TestHttp" static="false" type="tv.ouya.console.util.http.TestHttp" visibility="public">
+</constructor>
+<method abstract="false" deprecated="not deprecated" final="false" name="deleteWasCalled" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getWasCalled" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="postWasCalled" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="putWasCalled" native="false" return="boolean" static="false" synchronized="false" visibility="public">
+</method>
+</class>
+<interface abstract="true" deprecated="not deprecated" final="false" name="WithTokenRequest" static="false" visibility="public">
+<implements name="tv.ouya.console.util.http.ApiRequest" name-generic-aware="tv.ouya.console.util.http.ApiRequest">
+</implements>
+<method abstract="true" deprecated="not deprecated" final="false" name="setToken" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+</method>
+</interface>
+</package>
+</api>
