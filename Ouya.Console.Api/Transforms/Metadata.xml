@@ -30,6 +30,7 @@
   <!-- Rename method parameters -->
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getControllerByDeviceId']/parameter[@name='p0']" name="name">deviceId</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getControllerByPlayer']/parameter[@name='p0']" name="name">playerIndex</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getPlayerNumByDeviceId']/parameter[@name='p0']" name="name">deviceId</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='onKeyDown']/parameter[@name='p0']" name="name">keyCode</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='onKeyDown']/parameter[@name='p1']" name="name">event</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='onKeyUp']/parameter[@name='p0']" name="name">keyCode</attr>

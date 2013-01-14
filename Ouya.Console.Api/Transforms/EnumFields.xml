@@ -36,4 +36,25 @@
     <field jni-name="BUTTON_U" clr-name="U" value="99" />
     <field jni-name="BUTTON_Y" clr-name="Y" value="100" />
   </mapping>
-</enum-field-mappings>
+  <mapping jni-interface="tv/ouya/console/api/OuyaErrorCodes" clr-enum-type="Ouya.Console.Api.ErrorCodes">
+    <field jni-name="CONSOLE_ALREADY_REGISTERED" clr-name="ConsoleAlreadyRegistered" value="2008" />
+    <field jni-name="EMAIL_NOT_CONFIRMED" clr-name="EmailNotConfirmed" value="2010" />
+    <field jni-name="ERROR_PARSING_RESPONSE_FROM_SERVER" clr-name="ErrorParsingResponseFromServer" value="3002" />
+    <field jni-name="ERROR_REMOTE_EXCEPTION" clr-name="ErrorRemoteException" value="3003" />
+    <field jni-name="FIELD_VALIDATIONS_FAILED" clr-name="FieldValidationsFailed" value="2006" />
+    <field jni-name="INSUFFICIENT_CREDIT" clr-name="InsufficientCredit" value="2011" />
+    <field jni-name="INVALID_APP_UUID" clr-name="InvalidAppUuid" value="2005" />
+    <field jni-name="INVALID_AUTHENTICATION_DATA" clr-name="InvalidAuthenticationData" value="2001" />
+    <field jni-name="INVALID_CATEGORY" clr-name="InvalidCategory" value="2012" />
+    <field jni-name="INVALID_CONSOLE_ID" clr-name="InvalidConsoleId" value="2007" />
+    <field jni-name="INVALID_DEVELOPER_UUID" clr-name="InvalidDeveloperUuid" value="2002" />
+    <field jni-name="INVALID_PRODUCT_ID" clr-name="InvalidProductId" value="2003" />
+    <field jni-name="INVALID_TOKEN" clr-name="InvalidToken" value="1000" />
+    <field jni-name="NOT_DEVELOPER" clr-name="NotDeveloper" value="2009" />
+    <field jni-name="NO_AUTHENTICATION_DATA" clr-name="NoAuthenticationData" value="2000" />
+    <field jni-name="PAYMENT_DECLINED" clr-name="PaymentDeclined" value="2004" />
+    <field jni-name="REQUIRED_PARAMETER_NOT_PROVIDED" clr-name="RequiredParameterNotProvided" value="1001" />
+    <field jni-name="SERVER_OFFLINE" clr-name="ServerOffline" value="3005" />
+    <field jni-name="THROW_DURING_ON_SUCCESS" clr-name="ThrowDuringOnSuccess" value="3004" />
+  </mapping>
+  </enum-field-mappings>

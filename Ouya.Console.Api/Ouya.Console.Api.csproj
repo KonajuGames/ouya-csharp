@@ -55,12 +55,6 @@
     </TransformFile>
   </ItemGroup>
   <ItemGroup>
-    <ReferenceJar Include="Jars\commons-lang-2.6.jar" />
-  </ItemGroup>
-  <ItemGroup>
-    <ReferenceJar Include="Jars\guava-r09.jar" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedJar Include="Jars\ouya-sdk.jar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Xamarin.Android.Bindings.targets" />

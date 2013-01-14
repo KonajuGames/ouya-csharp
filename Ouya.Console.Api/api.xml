@@ -97,6 +97,10 @@
 </method>
 <method abstract="false" deprecated="not deprecated" final="false" name="getPlayerNum" native="false" return="int" static="false" synchronized="false" visibility="public">
 </method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getPlayerNumByDeviceId" native="false" return="int" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="int">
+</parameter>
+</method>
 <method abstract="false" deprecated="deprecated" final="false" name="interpret" native="false" return="int" static="true" synchronized="false" visibility="public">
 <parameter name="p0" type="int">
 </parameter>
@@ -205,7 +209,7 @@
 </field>
 <field deprecated="not deprecated" final="true" name="NOT_DEVELOPER" static="true" transient="false" type="int" type-generic-aware="int" value="2009" visibility="public" volatile="false">
 </field>
-<field deprecated="not deprecated" final="true" name="NO_AUTHENTICATION_DATA" static="true" transient="false" type="int" type-generic-aware="int" value="2001" visibility="public" volatile="false">
+<field deprecated="not deprecated" final="true" name="NO_AUTHENTICATION_DATA" static="true" transient="false" type="int" type-generic-aware="int" value="2000" visibility="public" volatile="false">
 </field>
 <field deprecated="not deprecated" final="true" name="PAYMENT_DECLINED" static="true" transient="false" type="int" type-generic-aware="int" value="2004" visibility="public" volatile="false">
 </field>
@@ -427,10 +431,14 @@
 </parameter>
 <parameter name="p2" type="java.util.Date">
 </parameter>
+<parameter name="p3" type="java.util.Date">
+</parameter>
 </constructor>
 <constructor deprecated="not deprecated" final="false" name="Receipt" static="false" type="tv.ouya.console.api.Receipt" visibility="public">
 </constructor>
 <method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getGeneratedDate" native="false" return="java.util.Date" static="false" synchronized="false" visibility="public">
 </method>
 <method abstract="false" deprecated="not deprecated" final="false" name="getIdentifier" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
 </method>
@@ -784,6 +792,12 @@
 </parameter>
 </method>
 </class>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable" final="false" name="UserManager.RequestUserAddsAccountRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="UserManager.RequestUserAddsAccountRunnable" static="false" type="tv.ouya.console.api.UserManager.RequestUserAddsAccountRunnable" visibility="public">
+<parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.Void&gt;">
+</parameter>
+</constructor>
+</class>
 <class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable" final="false" name="UserManager.RequestUsernameRunnable" static="false" visibility="">
 <constructor deprecated="not deprecated" final="false" name="UserManager.RequestUsernameRunnable" static="false" type="tv.ouya.console.api.UserManager.RequestUsernameRunnable" visibility="public">
 <parameter name="p0" type="java.lang.String">
@@ -1015,10 +1029,6 @@
 <class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="true" name="R.attr" static="true" visibility="public">
 <constructor deprecated="not deprecated" final="false" name="R.attr" static="false" type="tv.ouya.console.iap.api.R.attr" visibility="public">
 </constructor>
-<field deprecated="not deprecated" final="false" name="hollow" static="true" transient="false" type="int" type-generic-aware="int" visibility="public" volatile="false">
-</field>
-<field deprecated="not deprecated" final="false" name="typeface" static="true" transient="false" type="int" type-generic-aware="int" visibility="public" volatile="false">
-</field>
 </class>
 <class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="true" name="R.drawable" static="true" visibility="public">
 <constructor deprecated="not deprecated" final="false" name="R.drawable" static="false" type="tv.ouya.console.iap.api.R.drawable" visibility="public">
@@ -1032,16 +1042,6 @@
 <field deprecated="not deprecated" final="false" name="fill" static="true" transient="false" type="int" type-generic-aware="int" visibility="public" volatile="false">
 </field>
 <field deprecated="not deprecated" final="false" name="wrap" static="true" transient="false" type="int" type-generic-aware="int" visibility="public" volatile="false">
-</field>
-</class>
-<class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="true" name="R.styleable" static="true" visibility="public">
-<constructor deprecated="not deprecated" final="false" name="R.styleable" static="false" type="tv.ouya.console.iap.api.R.styleable" visibility="public">
-</constructor>
-<field deprecated="not deprecated" final="true" name="OuyaTextView" static="true" transient="false" type="int[]" type-generic-aware="int[]" visibility="public" volatile="false">
-</field>
-<field deprecated="not deprecated" final="true" name="OuyaTextView_hollow" static="true" transient="false" type="int" type-generic-aware="int" value="1" visibility="public" volatile="false">
-</field>
-<field deprecated="not deprecated" final="true" name="OuyaTextView_typeface" static="true" transient="false" type="int" type-generic-aware="int" value="0" visibility="public" volatile="false">
 </field>
 </class>
 </package>
@@ -1945,6 +1945,12 @@
 <interface abstract="true" deprecated="not deprecated" final="false" name="IUserServiceDefinition" static="false" visibility="public">
 <implements name="android.os.IInterface" name-generic-aware="android.os.IInterface">
 </implements>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestUserAddsAccount" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.internal.IVoidListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
 <method abstract="true" deprecated="not deprecated" final="false" name="requestUsername" native="false" return="void" static="false" synchronized="false" visibility="public">
 <parameter name="p0" type="java.lang.String">
 </parameter>
@@ -1984,6 +1990,12 @@
 <method abstract="false" deprecated="not deprecated" final="false" name="asBinder" native="false" return="android.os.IBinder" static="false" synchronized="false" visibility="public">
 </method>
 <method abstract="false" deprecated="not deprecated" final="false" name="getInterfaceDescriptor" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestUserAddsAccount" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="tv.ouya.console.internal.IVoidListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
 </method>
 <method abstract="false" deprecated="not deprecated" final="false" name="requestUsername" native="false" return="void" static="false" synchronized="false" visibility="public">
 <parameter name="p0" type="java.lang.String">
