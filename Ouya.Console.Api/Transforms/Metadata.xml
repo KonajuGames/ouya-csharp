@@ -6,19 +6,15 @@
   -->
   <!-- Rename namespaces to remove initial "tv" -->
   <attr path="/api/package[@name='tv.ouya.console.api']" name="managedName">Ouya.Console.Api</attr>
-  <attr path="/api/package[@name='tv.ouya.console.internal']" name="managedName">Ouya.Console.Internal</attr>
-  <attr path="/api/package[@name='tv.ouya.console.util.http']" name="managedName">Ouya.Console.Util.Http</attr>
-  <!-- Remove problematic classes for now -->
-  <add-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CancelIgnoringOuyaResponseListener']">
-    <method name="onSuccess" return="void" abstract="false" native="false" synchronized="false" static="false" final="false" deprecated="not deprecated" visibility="public">
-      <parameter name="p0" type="java.lang.Object" />
-    </method>
-  </add-node>
-  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CancelIgnoringJsonResponseListener']">
-    <method name="onSuccess" return="void" abstract="true" native="false" synchronized="false" static="false" final="false" deprecated="not deprecated" visibility="public">
-      <parameter name="p0" type="java.lang.Object" />
-    </method>
-  </remove-node>
+  <attr path="/api/package[@name='tv.ouya.console.util']" name="managedName">Ouya.Console.Util</attr>
+  <!-- Add/remove nodes required for compiling -->
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CancelIgnoringOuyaResponseListener']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CancelIgnoringJsonResponseListener']" />
+  <!-- Remove internal namespaces from the public API -->
+  <remove-node path="/api/package[@name='tv.ouya.console.api.store']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.iap.api']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.internal']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.internal.util']" />
   <!-- Remove deprecated methods -->
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='interpret']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='bindRequestHasBeenMade']" />
