@@ -19,6 +19,7 @@ namespace Ouya.Console.Api
             RequestProductList(purchasables, new ProductListListener(tcs));
             return tcs.Task;
         }
+
         public Task<string> RequestPurchase(Purchasable purchasable)
         {
             var tcs = new TaskCompletionSource<string>();
