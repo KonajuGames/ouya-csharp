@@ -1,7 +1,7 @@
 ouya-csharp
 ===========
 
-C# bindings for the OUYA Development Kit 0.0.6
+C# bindings for the OUYA Development Kit 1.0.0
 
 To get your Mono for Android game showing up in the OUYA Launcher, you will need to:
 - set the project to use API Level 16
@@ -9,7 +9,7 @@ To get your Mono for Android game showing up in the OUYA Launcher, you will need
 - add the following IntentFilter attribute to your Activity class
 
     [IntentFilter(new[] { Intent.ActionMain }
-        , Categories = new[] { Intent.CategoryLauncher, "tv.ouya.intent.category.GAME" })]
+        , Categories = new[] { Intent.CategoryLauncher, OuyaIntent.CategoryGame })]
 
 Deploy the game to the device.  Now it will show up in the OUYA Launcher.
 
