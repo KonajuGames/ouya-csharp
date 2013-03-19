@@ -46,6 +46,8 @@
   <!-- Remove deprecated methods -->
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='bindRequestHasBeenMade']" />
   <!-- Rename method parameters -->
+  <attr path= "//parameter[@type='org.json.JSONObject']" name="type">java.lang.Object</attr>
+  <attr path= "//parameter[@type='org.json.JSONArray']" name="type">java.lang.Object</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaAuthenticationHelper']/method[@name='handleError']/parameter[@name='p0']" name="name">activity</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaAuthenticationHelper']/method[@name='handleError']/parameter[@name='p1']" name="name">errorCode</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaAuthenticationHelper']/method[@name='handleError']/parameter[@name='p2']" name="name">errorMessage</attr>
@@ -68,13 +70,10 @@
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='decryptProductResponse']/parameter[@name='p0']" name="name">productResponse</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='decryptProductResponse']/parameter[@name='p1']" name="name">applicationKey</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='decryptPurchaseResponse']/parameter[@name='p0']" name="name">encryptedResponse</attr>
-  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='decryptPurchaseResponse']/parameter[@type='org.json.JSONObject']" name="managedType">Java.Lang.Object</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='decryptPurchaseResponse']/parameter[@name='p1']" name="name">applicationKey</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='decryptReceiptResponse']/parameter[@name='p0']" name="name">encryptedResponse</attr>
-  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='decryptReceiptResponse']/parameter[@type='org.json.JSONObject']" name="managedType">Java.Lang.Object</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='decryptReceiptResponse']/parameter[@name='p1']" name="name">applicationKey</attr>
-  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='parseJSONReceiptResponse']/parameter[@type='org.json.JSONArray']" name="name">receiptResponse</attr>
-  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='parseJSONReceiptResponse']/parameter[@type='org.json.JSONArray']" name="managedType">Java.Lang.Object</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='parseJSONReceiptResponse']/parameter[@type='java.lang.Object']" name="name">receiptResponse</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='parseJSONReceiptResponse']/parameter[@type='java.lang.String']" name="name">receiptResponse</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='init']/parameter[@name='p0']" name="name">context</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='init']/parameter[@name='p1']" name="name">developerUuid</attr>
