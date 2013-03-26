@@ -42,6 +42,8 @@
     <Compile Include="OuyaRequestException.cs" />
     <Compile Include="ProductListListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseListener.cs" />
+    <Compile Include="ReceiptsListener.cs" />
     <Compile Include="StringListener.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedJar Include="Jars\ouya-sdk.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedJar Include="Jars\purchaseutils.jar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
