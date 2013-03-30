@@ -38,14 +38,16 @@ import java.util.*;
 
 public class PurchaseUtils
 {
-	private static final String LOG_TAG = "Ouya.CSharp.PurchaseUtils";
-	private PublicKey mPublicKey;
-	private boolean mSetTestMode;
-	
-	public PurchaseUtils(byte[] applicationKey, boolean setTestMode)
-	{
-		mSetTestMode = setTestMode;
-		
+    private static final String LOG_TAG = "Ouya.CSharp.PurchaseUtils";
+    private PublicKey mPublicKey;
+    private boolean mSetTestMode;
+        
+    public PurchaseUtils(byte[] applicationKey, boolean setTestMode)
+    {
+        mSetTestMode = setTestMode;
+
+        Log.d(LOG_TAG, "PurchaseUtils: created, test mode = " + (setTestMode ? "true" : "false"));
+        
         // Create a PublicKey object from the key data downloaded from the developer portal.
         try {
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(applicationKey);
@@ -54,31 +56,30 @@ public class PurchaseUtils
         } catch (Exception e) {
             Log.e(LOG_TAG, "Unable to create encryption key", e);
         }		
-	}
-	
+    }
     public Purchasable CreatePurchasable(String productId, String uniquePurchaseId) 
     {
-    	Log.e(LOG_TAG, "CreatePurchasable started: " + productId);
-    	
+        Log.d(LOG_TAG, "CreatePurchasable started: " + productId);
+        
         SecureRandom sr = null;
-		try {
-			sr = SecureRandom.getInstance("SHA1PRNG");
-		} catch (NoSuchAlgorithmException e) {
-			Log.e(LOG_TAG, "SecureRandom.getInstance failed", e);
-			return null;
-		}
-    	
+        try {
+            sr = SecureRandom.getInstance("SHA1PRNG");
+        } catch (NoSuchAlgorithmException e) {
+            Log.e(LOG_TAG, "SecureRandom.getInstance failed", e);
+            return null;
+        }
+        
         JSONObject purchaseRequest = new JSONObject();
         try {
-			purchaseRequest.put("uuid", uniquePurchaseId);
-	        purchaseRequest.put("identifier", productId);
-	        if (mSetTestMode) {	        	
-	        	purchaseRequest.put("testing", "true"); // This value is only needed for testing, not setting it results in a live purchase
-	        }
-		} catch (JSONException e) {
-			Log.e(LOG_TAG, "Unable to create purchase request", e);
-			return null;
-		}
+            purchaseRequest.put("uuid", uniquePurchaseId);
+            purchaseRequest.put("identifier", productId);
+            if (mSetTestMode) {	        	
+                purchaseRequest.put("testing", "true"); // This value is only needed for testing, not setting it results in a live purchase
+            }
+        } catch (JSONException e) {
+            Log.e(LOG_TAG, "Unable to create purchase request", e);
+            return null;
+        }
         
         String purchaseRequestJson = purchaseRequest.toString();
 
@@ -93,131 +94,141 @@ public class PurchaseUtils
         Cipher cipher;
         byte[] payload = null;
         byte[] encryptedKey = null;
-		try 
-		{
-			cipher = Cipher.getInstance("AES/CBC/PKCS5Padding", "BC");
-	        cipher.init(Cipher.ENCRYPT_MODE, key, iv);
-	        payload = cipher.doFinal(purchaseRequestJson.getBytes("UTF-8"));
+        try 
+        {
+            cipher = Cipher.getInstance("AES/CBC/PKCS5Padding", "BC");
+            cipher.init(Cipher.ENCRYPT_MODE, key, iv);
+            payload = cipher.doFinal(purchaseRequestJson.getBytes("UTF-8"));
 
-	        cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "BC");
-	        cipher.init(Cipher.ENCRYPT_MODE, mPublicKey);
-	        encryptedKey = cipher.doFinal(keyBytes);
-		} 
-		catch (NoSuchAlgorithmException e) { 
-			Log.e(LOG_TAG, "Unable to create purchase request", e);
-			return null;
-		} 
-		catch (NoSuchProviderException e) { 
-			Log.e(LOG_TAG, "Unable to create purchase request", e);
-			return null;
-		}
-		catch (NoSuchPaddingException e) { 
-			Log.e(LOG_TAG, "Unable to create purchase request", e);
-			return null;
-		}
-		catch (InvalidKeyException e) { 
-			Log.e(LOG_TAG, "Unable to create purchase request", e);
-			return null;
-		} 
-		catch (InvalidAlgorithmParameterException e) { 
-			Log.e(LOG_TAG, "Unable to create purchase request", e);
-			return null;
-		}
-		catch (IllegalBlockSizeException e) { 
-			Log.e(LOG_TAG, "Unable to create purchase request", e);
-			return null;
-		}
-		catch (BadPaddingException e) { 
-			Log.e(LOG_TAG, "Unable to create purchase request", e);
-			return null;
-		} 
-		catch (UnsupportedEncodingException e) { 
-			Log.e(LOG_TAG, "Unable to create purchase request", e);
-			return null;
-		}
-    	
+            cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "BC");
+            cipher.init(Cipher.ENCRYPT_MODE, mPublicKey);
+            encryptedKey = cipher.doFinal(keyBytes);
+        } 
+        catch (NoSuchAlgorithmException e) { 
+            Log.e(LOG_TAG, "Unable to create purchase request", e);
+            return null;
+        } 
+        catch (NoSuchProviderException e) { 
+            Log.e(LOG_TAG, "Unable to create purchase request", e);
+            return null;
+        }
+        catch (NoSuchPaddingException e) { 
+            Log.e(LOG_TAG, "Unable to create purchase request", e);
+            return null;
+        }
+        catch (InvalidKeyException e) { 
+            Log.e(LOG_TAG, "Unable to create purchase request", e);
+            return null;
+        } 
+        catch (InvalidAlgorithmParameterException e) { 
+            Log.e(LOG_TAG, "Unable to create purchase request", e);
+            return null;
+        }
+        catch (IllegalBlockSizeException e) { 
+            Log.e(LOG_TAG, "Unable to create purchase request", e);
+            return null;
+        }
+        catch (BadPaddingException e) { 
+            Log.e(LOG_TAG, "Unable to create purchase request", e);
+            return null;
+        } 
+        catch (UnsupportedEncodingException e) { 
+            Log.e(LOG_TAG, "Unable to create purchase request", e);
+            return null;
+        }
+        
         Purchasable purchasable =
                 new Purchasable(
                         productId,
                         Base64.encodeToString(encryptedKey, Base64.NO_WRAP),
                         Base64.encodeToString(ivBytes, Base64.NO_WRAP),
                         Base64.encodeToString(payload, Base64.NO_WRAP) );
-    	
-    	Log.e(LOG_TAG, "CreatePurchasable completed: " + productId);
+        
+        Log.d(LOG_TAG, "CreatePurchasable: completed " + productId);
         
         return purchasable;
     }
     
     public List<Receipt> CreateReceiptsFromResponse(String receiptsResponse)
     {
+        Log.d(LOG_TAG, "CreateReceiptsFromResponse: started");
+        
         OuyaEncryptionHelper helper = new OuyaEncryptionHelper();
-        List<Receipt> receipts;
+        List<Receipt> receipts = null;
         try {
             JSONObject response = new JSONObject(receiptsResponse);
-            if(response.has("key") && response.has("iv")) {
-                receipts = helper.decryptReceiptResponse(response, mPublicKey);
-            } else {
-                receipts = helper.parseJSONReceiptResponse(receiptsResponse);
+            if (response != null) {
+                if(response.has("key") && response.has("iv")) {
+                    Log.d(LOG_TAG, "CreateReceiptsFromResponse: decrypting response");
+                    receipts = helper.decryptReceiptResponse(response, mPublicKey);
+                } else {
+                    Log.d(LOG_TAG, "CreateReceiptsFromResponse: unencrypted response");
+                    receipts = helper.parseJSONReceiptResponse(receiptsResponse);
+                }
             }
         } catch (ParseException e) { 
-			Log.e(LOG_TAG, "Unable to create purchase receipts", e);
-			return null;
-		} catch (JSONException e) { 
-			Log.e(LOG_TAG, "Unable to create purchase receipts", e);
-			return null;
-		} catch (GeneralSecurityException e) { 
-			Log.e(LOG_TAG, "Unable to create purchase receipts", e);
-			return null;
-		} catch (IOException e) { 
-			Log.e(LOG_TAG, "Unable to create purchase receipts", e);
-			return null;
-		}
-        Collections.sort(receipts, new Comparator<Receipt>() {
-            @Override
-            public int compare(Receipt lhs, Receipt rhs) {
-                return rhs.getPurchaseDate().compareTo(lhs.getPurchaseDate());
-            }
-        });
+            Log.e(LOG_TAG, "Unable to create purchase receipts", e);
+            return null;
+        } catch (JSONException e) { 
+            Log.e(LOG_TAG, "Unable to create purchase receipts", e);
+            return null;
+        } catch (GeneralSecurityException e) { 
+            Log.e(LOG_TAG, "Unable to create purchase receipts", e);
+            return null;
+        } catch (IOException e) { 
+            Log.e(LOG_TAG, "Unable to create purchase receipts", e);
+            return null;
+        }
+        if (receipts != null)
+        {
+            Log.d(LOG_TAG, "CreateReceiptsFromResponse: sorting receipts by date");
+            Collections.sort(receipts, new Comparator<Receipt>() {
+                @Override
+                public int compare(Receipt lhs, Receipt rhs) {
+                    return rhs.getPurchaseDate().compareTo(lhs.getPurchaseDate());
+                }
+            });
+        }
 
+        Log.d(LOG_TAG, "CreateReceiptsFromResponse: completed");
         return receipts;
     }
 
     public boolean IsPurchaseResponseMatching(String purchaseResponse, String productId, String uniquePurchaseId)
     {
-    	try
-    	{
-	        OuyaEncryptionHelper helper = new OuyaEncryptionHelper();
-	    	
-	        JSONObject response = new JSONObject(purchaseResponse);
-	        if (response.has("key") && response.has("iv")) 
-	        {
-	            String id = helper.decryptPurchaseResponse(response, mPublicKey);
-	        	if (id != uniquePurchaseId)
-	        	{
-	        		return false;
-	        	}
-	        } 
-	        else 
-	        {
-	            Product p = new Product(response);
-	            if (p.getIdentifier() != productId)
-	            {
-	            	return false;
-	            }
-	        }
-	    } catch (ParseException e) { 
-			Log.e(LOG_TAG, "Unable to determine whether purchase response matches", e);
-			return false;
-		} catch (JSONException e) { 
-			Log.e(LOG_TAG, "Unable to determine whether purchase response matches", e);
-			return false;
-		} catch (IOException e) {
-			Log.e(LOG_TAG, "Unable to determine whether purchase response matches", e);
-	    	return false;
-	    } catch (GeneralSecurityException e) { 
-			Log.e(LOG_TAG, "Unable to determine whether purchase response matches", e);
-			return false;
-		}
-    	return true;
+        try
+        {
+            OuyaEncryptionHelper helper = new OuyaEncryptionHelper();
+            
+            JSONObject response = new JSONObject(purchaseResponse);
+            if (response.has("key") && response.has("iv")) 
+            {
+                String id = helper.decryptPurchaseResponse(response, mPublicKey);
+                if (id == null)
+                    return false;
+
+                if (!id.equals(uniquePurchaseId))
+                    return false;
+            } 
+            else 
+            {
+                Product p = new Product(response);
+                if (!p.getIdentifier().equals(productId))
+                    return false;
+            }
+        } catch (ParseException e) { 
+            Log.e(LOG_TAG, "Unable to determine whether purchase response matches", e);
+            return false;
+        } catch (JSONException e) { 
+            Log.e(LOG_TAG, "Unable to determine whether purchase response matches", e);
+            return false;
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "Unable to determine whether purchase response matches", e);
+            return false;
+        } catch (GeneralSecurityException e) { 
+            Log.e(LOG_TAG, "Unable to determine whether purchase response matches", e);
+            return false;
+        }
+        return true;
     }
 }
