@@ -7,7 +7,7 @@ namespace Ouya.Console.Api
 {
     public partial class OuyaFacade
     {
-        private PurchaseUtils _purchaseUtils;
+        public PurchaseUtils PurchaseUtils { get; private set; }
 
         public void Init(Android.Content.Context context, string developerUuid, byte[] applicationKey, bool setTestMode)
         {
@@ -21,7 +21,7 @@ namespace Ouya.Console.Api
 
         private void InitPurchaseUtils(byte[] applicationKey, bool setTestMode)
         {
-            _purchaseUtils = new PurchaseUtils(applicationKey, setTestMode);
+            PurchaseUtils = new PurchaseUtils(applicationKey, setTestMode);
         }
 
         public Task<string> RequestGamerUuid()
@@ -31,24 +31,26 @@ namespace Ouya.Console.Api
             return tcs.Task;
         }
 
+
         public Task<IList<Product>> RequestProductList(IList<Purchasable> purchasables)
         {
             var tcs = new TaskCompletionSource<IList<Product>>();
             RequestProductList(purchasables, new ProductListListener(tcs));
             return tcs.Task;
         }
+
         public Task<bool> RequestPurchase(string productId, string uniquePurchaseId)
         {
             var tcs = new TaskCompletionSource<bool>();
-            var purchasable = _purchaseUtils.CreatePurchasable(productId, uniquePurchaseId);
-            RequestPurchase(purchasable, new PurchaseListener(tcs, _purchaseUtils, productId, uniquePurchaseId));
+            var purchasable = PurchaseUtils.CreatePurchasable(productId, uniquePurchaseId);
+            RequestPurchase(purchasable, new PurchaseListener(tcs, PurchaseUtils, productId, uniquePurchaseId));
             return tcs.Task;
         }
 
         public Task<IList<Receipt>> RequestReceipts()
         {
             var tcs = new TaskCompletionSource<IList<Receipt>>();
-            RequestReceipts(new ReceiptsListener(tcs, _purchaseUtils));
+            RequestReceipts(new ReceiptsListener(tcs, PurchaseUtils));
             return tcs.Task;
         }
     }
