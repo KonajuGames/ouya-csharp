@@ -12,16 +12,11 @@ namespace Ouya.Console.Api
         public void Init(Android.Content.Context context, string developerUuid, byte[] applicationKey, bool setTestMode)
         {
             Init(context, developerUuid);
-            InitPurchaseUtils(applicationKey, setTestMode);
+            PurchaseUtils = new PurchaseUtils(applicationKey, setTestMode);
             if (setTestMode)
             {
                 SetTestMode();
             }
-        }
-
-        private void InitPurchaseUtils(byte[] applicationKey, bool setTestMode)
-        {
-            PurchaseUtils = new PurchaseUtils(applicationKey, setTestMode);
         }
 
         public Task<string> RequestGamerUuid()
@@ -31,7 +26,6 @@ namespace Ouya.Console.Api
             return tcs.Task;
         }
 
-
         public Task<IList<Product>> RequestProductList(IList<Purchasable> purchasables)
         {
             var tcs = new TaskCompletionSource<IList<Product>>();
@@ -39,13 +33,18 @@ namespace Ouya.Console.Api
             return tcs.Task;
         }
 
-        public Task<bool> RequestPurchase(string productId, string uniquePurchaseId)
-        {
-            var tcs = new TaskCompletionSource<bool>();
-            var purchasable = PurchaseUtils.CreatePurchasable(productId, uniquePurchaseId);
-            RequestPurchase(purchasable, new PurchaseListener(tcs, PurchaseUtils, productId, uniquePurchaseId));
-            return tcs.Task;
-        }
+        // TODO: Figure out why this function does not work. PurchaseUtils.CreatePurchasable
+        // ALWAYS seems to crash in the JNI method call unless it's called right at the start 
+        // of the application, eg in Activity.OnCreate(). Not sure why. Instead use 
+        // OuyaFacade.PurchaseUtils to create the purchasables up-front and later use the
+        // built in RequestPurchase for the actual purchase.
+        //public Task<bool> RequestPurchase(string productId, string uniquePurchaseId)
+        //{
+        //    var tcs = new TaskCompletionSource<bool>();
+        //    var purchasable = PurchaseUtils.CreatePurchasable(productId, uniquePurchaseId);
+        //    RequestPurchase(purchasable, new PurchaseListener(tcs, PurchaseUtils, productId, uniquePurchaseId));
+        //    return tcs.Task;
+        //}
 
         public Task<IList<Receipt>> RequestReceipts()
         {
