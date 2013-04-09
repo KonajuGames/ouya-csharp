@@ -37,12 +37,22 @@
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager.RequestUpdateUserInfoRunnable']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager.RequestUserInfoRunnable']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager.RequestSystemMessageRunnable']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager.RequestCachedUserInfoRunnable']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='StoreManager']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager.AddAccountCallback']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager.RequestUserAddsAccountRunnable']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager.RequestUsernameRunnable']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager.RequestUserAddCreditCardRunnable']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager.RequestAddLikeRunnable']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager.RequestGetLikesRunnable']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager.RequestRemoveLikeRunnable']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager.RequestUserGetCreditCardInfoRunnable']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager.1']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserInfo.1']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CreditCardInfo.1']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserInfo']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CreditCardInfo']" />
   <!-- Remove deprecated methods -->
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='bindRequestHasBeenMade']" />
   <!-- Rename method parameters -->

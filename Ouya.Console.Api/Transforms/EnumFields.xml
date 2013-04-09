@@ -38,6 +38,11 @@
   </mapping>
   <mapping jni-interface="tv/ouya/console/api/OuyaErrorCodes" clr-enum-type="Ouya.Console.Api.ErrorCodes">
     <field jni-name="CONSOLE_ALREADY_REGISTERED" clr-name="ConsoleAlreadyRegistered" value="2008" />
+    <field jni-name="CREDIT_CARD_EXPIRED" clr-name="CreditCardExpired" value="2021" />
+    <field jni-name="CREDIT_CARD_NEEDS_ZIP" clr-name="CreditCardNeedsZip" value="2025" />
+    <field jni-name="CREDIT_CARD_NOT_FOUND" clr-name="CreditCardNotFound" value="2019" />
+    <field jni-name="CREDIT_CARD_SUBMISSION_FAILED" clr-name="CreditCardSubmissionFailed" value="2013" />
+    <field jni-name="DUPLICATE_PURCHASE" clr-name="DuplicatePurchase" value="2015" />
     <field jni-name="EMAIL_NOT_CONFIRMED" clr-name="EmailNotConfirmed" value="2010" />
     <field jni-name="ERROR_PARSING_RESPONSE_FROM_SERVER" clr-name="ErrorParsingResponseFromServer" value="3002" />
     <field jni-name="ERROR_REMOTE_EXCEPTION" clr-name="ErrorRemoteException" value="3003" />
@@ -52,6 +57,9 @@
     <field jni-name="INVALID_TOKEN" clr-name="InvalidToken" value="1000" />
     <field jni-name="NOT_DEVELOPER" clr-name="NotDeveloper" value="2009" />
     <field jni-name="NO_AUTHENTICATION_DATA" clr-name="NoAuthenticationData" value="2000" />
+    <field jni-name="NO_CACHED_USERDATA" clr-name="NoCachedUserdata" value="2501" />
+    <field jni-name="NO_CREDIT_CARD" clr-name="NoCreditCard" value="2020" />
+    <field jni-name="NO_PAYMENT_METHOD" clr-name="NoPaymentMethod" value="2014" />
     <field jni-name="PAYMENT_DECLINED" clr-name="PaymentDeclined" value="2004" />
     <field jni-name="REQUIRED_PARAMETER_NOT_PROVIDED" clr-name="RequiredParameterNotProvided" value="1001" />
     <field jni-name="SERVER_OFFLINE" clr-name="ServerOffline" value="3005" />
