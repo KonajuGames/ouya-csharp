@@ -1,3 +1,7 @@
+// OUYA Development Kit C# bindings - Copyright (C) Konaju Games
+// This file is subject to the terms and conditions defined in
+// file 'LICENSE.txt' which is part of this source code package.
+
 using System.Threading.Tasks;
 using Android.Runtime;
 using System.Collections.Generic;

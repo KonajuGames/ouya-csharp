@@ -81,7 +81,11 @@
 <constructor deprecated="not deprecated" final="false" name="CreditCardInfo" static="false" type="tv.ouya.console.api.CreditCardInfo" visibility="public">
 </constructor>
 <constructor deprecated="not deprecated" final="false" name="CreditCardInfo" static="false" type="tv.ouya.console.api.CreditCardInfo" visibility="public">
-<parameter name="p0" type="int">
+<parameter name="p0" type="org.json.JSONObject">
+</parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="CreditCardInfo" static="false" type="tv.ouya.console.api.CreditCardInfo" visibility="public">
+<parameter name="p0" type="double">
 </parameter>
 <parameter name="p1" type="java.lang.String">
 </parameter>
@@ -90,13 +94,9 @@
 <parameter name="p3" type="java.lang.String">
 </parameter>
 </constructor>
-<constructor deprecated="not deprecated" final="false" name="CreditCardInfo" static="false" type="tv.ouya.console.api.CreditCardInfo" visibility="public">
-<parameter name="p0" type="org.json.JSONObject">
-</parameter>
-</constructor>
 <method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
 </method>
-<method abstract="false" deprecated="not deprecated" final="false" name="getBalance" native="false" return="int" static="false" synchronized="false" visibility="public">
+<method abstract="false" deprecated="not deprecated" final="false" name="getBalance" native="false" return="double" static="false" synchronized="false" visibility="public">
 </method>
 <method abstract="false" deprecated="not deprecated" final="false" name="getExpiresAt" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
 </method>
@@ -581,6 +581,10 @@
 <implements name="android.os.Parcelable" name-generic-aware="android.os.Parcelable">
 </implements>
 <constructor deprecated="not deprecated" final="false" name="Product" static="false" type="tv.ouya.console.api.Product" visibility="public">
+<parameter name="p0" type="org.json.JSONObject">
+</parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="Product" static="false" type="tv.ouya.console.api.Product" visibility="public">
 </constructor>
 <constructor deprecated="not deprecated" final="false" name="Product" static="false" type="tv.ouya.console.api.Product" visibility="public">
 <parameter name="p0" type="java.lang.String">
@@ -588,10 +592,6 @@
 <parameter name="p1" type="java.lang.String">
 </parameter>
 <parameter name="p2" type="int">
-</parameter>
-</constructor>
-<constructor deprecated="not deprecated" final="false" name="Product" static="false" type="tv.ouya.console.api.Product" visibility="public">
-<parameter name="p0" type="org.json.JSONObject">
 </parameter>
 </constructor>
 <method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
@@ -647,15 +647,15 @@
 <constructor deprecated="not deprecated" final="false" name="Purchasable" static="false" type="tv.ouya.console.api.Purchasable" visibility="public">
 <parameter name="p0" type="java.lang.String">
 </parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="Purchasable" static="false" type="tv.ouya.console.api.Purchasable" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
 <parameter name="p1" type="java.lang.String">
 </parameter>
 <parameter name="p2" type="java.lang.String">
 </parameter>
 <parameter name="p3" type="java.lang.String">
-</parameter>
-</constructor>
-<constructor deprecated="not deprecated" final="false" name="Purchasable" static="false" type="tv.ouya.console.api.Purchasable" visibility="public">
-<parameter name="p0" type="java.lang.String">
 </parameter>
 </constructor>
 <method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
@@ -996,10 +996,6 @@
 </parameter>
 <parameter name="p2" type="boolean">
 </parameter>
-<parameter name="p3" type="java.lang.String">
-</parameter>
-<parameter name="p4" type="java.lang.String">
-</parameter>
 </constructor>
 <constructor deprecated="not deprecated" final="false" name="UserInfo" static="false" type="tv.ouya.console.api.UserInfo" visibility="public">
 <parameter name="p0" type="java.lang.String">
@@ -1007,6 +1003,10 @@
 <parameter name="p1" type="java.lang.String">
 </parameter>
 <parameter name="p2" type="boolean">
+</parameter>
+<parameter name="p3" type="java.lang.String">
+</parameter>
+<parameter name="p4" type="java.lang.String">
 </parameter>
 </constructor>
 <method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
@@ -1091,6 +1091,12 @@
 <parameter name="p0" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.String&gt;">
 </parameter>
 </method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestRedeemVoucher" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.String&gt;">
+</parameter>
+</method>
 <method abstract="false" deprecated="not deprecated" final="false" name="requestRemoveLike" native="false" return="void" static="false" synchronized="false" visibility="public">
 <parameter name="p0" type="java.lang.String">
 </parameter>
@@ -1149,6 +1155,14 @@
 </class>
 <class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable" final="false" name="UserManager.RequestAddLikeRunnable" static="false" visibility=""/>
 <class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable" final="false" name="UserManager.RequestGetLikesRunnable" static="false" visibility=""/>
+<class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable" final="false" name="UserManager.RequestRedeemVoucherRunnable" static="false" visibility="">
+<constructor deprecated="not deprecated" final="false" name="UserManager.RequestRedeemVoucherRunnable" static="false" type="tv.ouya.console.api.UserManager.RequestRedeemVoucherRunnable" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.api.OuyaResponseListener&lt;java.lang.String&gt;">
+</parameter>
+</constructor>
+</class>
 <class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable" final="false" name="UserManager.RequestRemoveLikeRunnable" static="false" visibility=""/>
 <class abstract="false" deprecated="not deprecated" extends="tv.ouya.console.api.RequestRunnable" extends-generic-aware="tv.ouya.console.api.RequestRunnable" final="false" name="UserManager.RequestUserAddCreditCardRunnable" static="false" visibility="">
 <constructor deprecated="not deprecated" final="false" name="UserManager.RequestUserAddCreditCardRunnable" static="false" type="tv.ouya.console.api.UserManager.RequestUserAddCreditCardRunnable" visibility="public">
@@ -1199,6 +1213,8 @@
 </parameter>
 <parameter name="p3" type="java.util.HashMap&lt;java.lang.String, tv.ouya.console.api.store.AppDescription.AppVersion&gt;">
 </parameter>
+<parameter name="p4" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
 </constructor>
 <constructor deprecated="not deprecated" final="false" name="AppDescription" static="false" type="tv.ouya.console.api.store.AppDescription" visibility="public">
 <parameter name="p0" type="java.lang.String">
@@ -1209,10 +1225,10 @@
 </parameter>
 <parameter name="p3" type="java.util.HashMap&lt;java.lang.String, tv.ouya.console.api.store.AppDescription.AppVersion&gt;">
 </parameter>
-<parameter name="p4" type="java.util.List&lt;java.lang.String&gt;">
-</parameter>
 </constructor>
 <constructor deprecated="not deprecated" final="false" name="AppDescription" static="false" type="tv.ouya.console.api.store.AppDescription" visibility="public">
+<parameter name="p0" type="org.json.JSONObject">
+</parameter>
 </constructor>
 <constructor deprecated="not deprecated" final="false" name="AppDescription" static="false" type="tv.ouya.console.api.store.AppDescription" visibility="public">
 <parameter name="p0" type="java.lang.String">
@@ -1223,8 +1239,6 @@
 </parameter>
 </constructor>
 <constructor deprecated="not deprecated" final="false" name="AppDescription" static="false" type="tv.ouya.console.api.store.AppDescription" visibility="public">
-<parameter name="p0" type="org.json.JSONObject">
-</parameter>
 </constructor>
 <method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
 </method>
@@ -1293,10 +1307,10 @@
 </class>
 <class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="AppDescription.AppVersion" static="true" visibility="public">
 <constructor deprecated="not deprecated" final="false" name="AppDescription.AppVersion" static="false" type="tv.ouya.console.api.store.AppDescription.AppVersion" visibility="public">
-</constructor>
-<constructor deprecated="not deprecated" final="false" name="AppDescription.AppVersion" static="false" type="tv.ouya.console.api.store.AppDescription.AppVersion" visibility="public">
 <parameter name="p0" type="org.json.JSONObject">
 </parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="AppDescription.AppVersion" static="false" type="tv.ouya.console.api.store.AppDescription.AppVersion" visibility="public">
 </constructor>
 <method abstract="false" deprecated="not deprecated" final="false" name="getMainImageFullUrl" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
 </method>
@@ -1331,8 +1345,6 @@
 <implements name="android.os.Parcelable" name-generic-aware="android.os.Parcelable">
 </implements>
 <constructor deprecated="not deprecated" final="false" name="AppDetails" static="false" type="tv.ouya.console.api.store.AppDetails" visibility="public">
-</constructor>
-<constructor deprecated="not deprecated" final="false" name="AppDetails" static="false" type="tv.ouya.console.api.store.AppDetails" visibility="public">
 <parameter name="p0" type="java.lang.String">
 </parameter>
 <parameter name="p1" type="java.lang.String">
@@ -1355,10 +1367,14 @@
 </parameter>
 <parameter name="p10" type="java.lang.String">
 </parameter>
+<parameter name="p11" type="java.lang.String">
+</parameter>
 </constructor>
 <constructor deprecated="not deprecated" final="false" name="AppDetails" static="false" type="tv.ouya.console.api.store.AppDetails" visibility="public">
 <parameter name="p0" type="org.json.JSONObject">
 </parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="AppDetails" static="false" type="tv.ouya.console.api.store.AppDetails" visibility="public">
 </constructor>
 <method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
 </method>
@@ -1381,6 +1397,8 @@
 <field deprecated="not deprecated" final="false" name="description" static="false" transient="false" type="java.lang.String" type-generic-aware="java.lang.String" visibility="public" volatile="false">
 </field>
 <field deprecated="not deprecated" final="false" name="imageUrls" static="false" transient="false" type="java.util.List" type-generic-aware="java.util.List&lt;java.lang.String&gt;" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="false" name="latestVersion" static="false" transient="false" type="java.lang.String" type-generic-aware="java.lang.String" visibility="public" volatile="false">
 </field>
 <field deprecated="not deprecated" final="false" name="likeCount" static="false" transient="false" type="java.lang.Long" type-generic-aware="java.lang.Long" visibility="public" volatile="false">
 </field>
@@ -1415,8 +1433,6 @@
 <implements name="android.os.Parcelable" name-generic-aware="android.os.Parcelable">
 </implements>
 <constructor deprecated="not deprecated" final="false" name="StoreSection" static="false" type="tv.ouya.console.api.store.StoreSection" visibility="public">
-</constructor>
-<constructor deprecated="not deprecated" final="false" name="StoreSection" static="false" type="tv.ouya.console.api.store.StoreSection" visibility="public">
 <parameter name="p0" type="java.lang.String">
 </parameter>
 <parameter name="p1" type="java.lang.String">
@@ -1427,6 +1443,8 @@
 <constructor deprecated="not deprecated" final="false" name="StoreSection" static="false" type="tv.ouya.console.api.store.StoreSection" visibility="public">
 <parameter name="p0" type="org.json.JSONObject">
 </parameter>
+</constructor>
+<constructor deprecated="not deprecated" final="false" name="StoreSection" static="false" type="tv.ouya.console.api.store.StoreSection" visibility="public">
 </constructor>
 <method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
 </method>
@@ -1491,18 +1509,22 @@
 <implements name="android.os.Parcelable" name-generic-aware="android.os.Parcelable">
 </implements>
 <constructor deprecated="not deprecated" final="false" name="Tag" static="false" type="tv.ouya.console.api.store.Tag" visibility="public">
-</constructor>
-<constructor deprecated="not deprecated" final="false" name="Tag" static="false" type="tv.ouya.console.api.store.Tag" visibility="public">
 <parameter name="p0" type="java.lang.String">
 </parameter>
 <parameter name="p1" type="java.lang.Boolean">
+</parameter>
+<parameter name="p2" type="java.lang.String">
 </parameter>
 </constructor>
 <constructor deprecated="not deprecated" final="false" name="Tag" static="false" type="tv.ouya.console.api.store.Tag" visibility="public">
 <parameter name="p0" type="org.json.JSONObject">
 </parameter>
 </constructor>
+<constructor deprecated="not deprecated" final="false" name="Tag" static="false" type="tv.ouya.console.api.store.Tag" visibility="public">
+</constructor>
 <method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getImageUrl" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
 </method>
 <method abstract="false" deprecated="not deprecated" final="false" name="getName" native="false" return="java.lang.String" static="false" synchronized="false" visibility="public">
 </method>
@@ -2832,6 +2854,14 @@
 <exception name="RemoteException" type="android.os.RemoteException">
 </exception>
 </method>
+<method abstract="true" deprecated="not deprecated" final="false" name="requestRedeemVoucher" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IStringListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
 <method abstract="true" deprecated="not deprecated" final="false" name="requestRemoveLike" native="false" return="void" static="false" synchronized="false" visibility="public">
 <parameter name="p0" type="java.lang.String">
 </parameter>
@@ -2940,6 +2970,14 @@
 <parameter name="p0" type="java.lang.String">
 </parameter>
 <parameter name="p1" type="tv.ouya.console.internal.IVoidListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="requestRedeemVoucher" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="tv.ouya.console.internal.IStringListener">
 </parameter>
 <exception name="RemoteException" type="android.os.RemoteException">
 </exception>

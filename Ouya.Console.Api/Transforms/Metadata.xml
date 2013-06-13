@@ -1,5 +1,9 @@
 <metadata>
   <!--
+    OUYA Development Kit C# bindings - Copyright (C) Konaju Games
+    This file is subject to the terms and conditions defined in
+    file 'LICENSE.txt' which is part of this source code package.
+
     To be done:
       OuyaController
         AvailableButtons, AvailableAxes: Remove setter from property
@@ -47,6 +51,7 @@
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager.RequestGetLikesRunnable']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager.RequestRemoveLikeRunnable']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager.RequestUserGetCreditCardInfoRunnable']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager.RequestRedeemVoucherRunnable']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserManager.1']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserInfo.1']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CreditCardInfo.1']" />
