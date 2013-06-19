@@ -23,7 +23,7 @@ namespace Ouya.Console.Api
 
         public void OnFailure(int errorCode, string errorMessage, global::Android.OS.Bundle optionalData)
         {
-            tcs.SetException(new OuyaRequestException(errorCode, errorMessage));
+            tcs.SetException(new OuyaRequestException(errorCode, errorMessage, optionalData));
         }
 
         public void OnSuccess(global::Java.Lang.Object result)
