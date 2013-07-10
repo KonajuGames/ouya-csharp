@@ -1369,6 +1369,10 @@
 </parameter>
 <parameter name="p11" type="java.lang.String">
 </parameter>
+<parameter name="p12" type="java.lang.Boolean">
+</parameter>
+<parameter name="p13" type="java.lang.String">
+</parameter>
 </constructor>
 <constructor deprecated="not deprecated" final="false" name="AppDetails" static="false" type="tv.ouya.console.api.store.AppDetails" visibility="public">
 <parameter name="p0" type="org.json.JSONObject">
@@ -1395,6 +1399,10 @@
 <field deprecated="not deprecated" final="false" name="apkFileSize" static="false" transient="false" type="java.lang.Long" type-generic-aware="java.lang.Long" visibility="public" volatile="false">
 </field>
 <field deprecated="not deprecated" final="false" name="description" static="false" transient="false" type="java.lang.String" type-generic-aware="java.lang.String" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="false" name="developer" static="false" transient="false" type="java.lang.String" type-generic-aware="java.lang.String" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="false" name="founder" static="false" transient="false" type="boolean" type-generic-aware="boolean" visibility="public" volatile="false">
 </field>
 <field deprecated="not deprecated" final="false" name="imageUrls" static="false" transient="false" type="java.util.List" type-generic-aware="java.util.List&lt;java.lang.String&gt;" visibility="public" volatile="false">
 </field>
