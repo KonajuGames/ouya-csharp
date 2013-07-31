@@ -5,21 +5,24 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Android.Runtime;
-using Ouya.Csharp;
+using System;
+using Org.Json;
+using Java.Security;
+using Android.OS;
 
 namespace Ouya.Console.Api
 {
     class PurchaseListener : global::Java.Lang.Object, IOuyaResponseListener
     {
         TaskCompletionSource<bool> _tcs;
-        PurchaseUtils _purchaseUtils;
+        IPublicKey _publicKey;
         Product _product;
         string _uniquePurchaseId;
 
-        public PurchaseListener(TaskCompletionSource<bool> tcs, PurchaseUtils purchaseUtils, Product product, string uniquePurchaseId)
+        public PurchaseListener(TaskCompletionSource<bool> tcs, IPublicKey publicKey, Product product, string uniquePurchaseId)
         {
             _tcs = tcs;
-            _purchaseUtils = purchaseUtils;
+            _publicKey = publicKey;
             _product = product;
             _uniquePurchaseId = uniquePurchaseId;
         }
@@ -29,16 +32,22 @@ namespace Ouya.Console.Api
             _tcs.SetCanceled();
         }
 
-        public void OnFailure(int errorCode, string errorMessage, global::Android.OS.Bundle optionalData)
+        public void OnFailure(int errorCode, string errorMessage, Bundle optionalData)
         {
             _tcs.SetException(new OuyaRequestException(errorCode, errorMessage, optionalData));
         }
 
         public void OnSuccess(global::Java.Lang.Object result)
         {
-            var str = result.JavaCast<Java.Lang.String>();
-            bool purchaseSucceeded = _purchaseUtils.IsPurchaseResponseMatching(str.ToString(), _product, _uniquePurchaseId);
-            _tcs.SetResult(purchaseSucceeded);
+            var str = result.JavaCast<Java.Lang.String>().ToString();
+            using (var helper = new OuyaEncryptionHelper())
+            {
+                var response = new JSONObject(str);
+                var id = helper.DecryptPurchaseResponse(response, _publicKey);
+                if (id != _uniquePurchaseId)
+                    OnFailure(OuyaErrorCodes.ThrowDuringOnSuccess, "Received purchase ID does not match what we expected to receive", Bundle.Empty);
+                _tcs.SetResult(true);
+            }
         }
     }
 }
