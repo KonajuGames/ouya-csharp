@@ -11,57 +11,42 @@ namespace Ouya.Console.Api
 {
     static class CryptoHelper
     {
-        // This constant string is used as a "salt" value for the PasswordDeriveBytes function calls.
-        // This size of the IV (in bytes) must = (keysize / 8).  Default keysize is 256, so the IV must be
-        // 32 bytes long.
-        static private byte[] initVectorBytes = new byte[]
-        {
-            79, 98, 179, 125,
-            112, 6, 84, 219,
-            122, 186, 184, 174,
-            254, 123, 146, 95,
-            221, 234, 15, 22,
-            189, 228, 252, 230,
-            179, 182, 182, 70,
-            102, 129, 181, 84
-        };
+        static byte[] key = { 112, 24, 164, 208, 255, 163, 125, 249, 214, 239, 60, 233, 195, 223, 85, 197, 150, 210, 239, 103, 175, 147, 208, 150, 67, 162, 149, 176, 96, 94, 153, 131 };
 
-        // This constant is used to determine the keysize of the encryption algorithm.
-        static private int keysize = 256;
-
-        public static string Encrypt(string plainText, string passPhrase)
+        static public string Encrypt(string unencrypted, string passKey)
         {
-            byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-            PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null);
-            byte[] keyBytes = password.GetBytes(keysize / 8);
-            RijndaelManaged symmetricKey = new RijndaelManaged();
-            symmetricKey.Mode = CipherMode.CBC;
-            ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes);
-            MemoryStream memoryStream = new MemoryStream();
-            CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write);
-            cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
-            cryptoStream.FlushFinalBlock();
-            byte[] cipherTextBytes = memoryStream.ToArray();
-            memoryStream.Close();
-            cryptoStream.Close();
-            return Convert.ToBase64String(cipherTextBytes);
+            var guid = Guid.Parse(passKey);
+            return Convert.ToBase64String(Encrypt(Encoding.UTF8.GetBytes(unencrypted), guid.ToByteArray()));
         }
 
-        public static string Decrypt(string cipherText, string passPhrase)
+        static public string Decrypt(string encrypted, string passKey)
         {
-            byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
-            PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null);
-            byte[] keyBytes = password.GetBytes(keysize / 8);
-            RijndaelManaged symmetricKey = new RijndaelManaged();
-            symmetricKey.Mode = CipherMode.CBC;
-            ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes);
-            MemoryStream memoryStream = new MemoryStream(cipherTextBytes);
-            CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
-            byte[] plainTextBytes = new byte[cipherTextBytes.Length];
-            int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
-            memoryStream.Close();
-            cryptoStream.Close();
-            return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
+            var guid = Guid.Parse(passKey);
+            return Encoding.UTF8.GetString(Decrypt(Convert.FromBase64String(encrypted), guid.ToByteArray()));
+        }
+
+        static byte[] Encrypt(byte[] buffer, byte[] vector)
+        {
+            var rm = new RijndaelManaged();
+            var encryptor = rm.CreateEncryptor(key, vector);
+            return Transform(buffer, encryptor);
+        }
+
+        static byte[] Decrypt(byte[] buffer, byte[] vector)
+        {
+            var rm = new RijndaelManaged();
+            var decryptor = rm.CreateDecryptor(key, vector);
+            return Transform(buffer, decryptor);
+        }
+
+        static byte[] Transform(byte[] buffer, ICryptoTransform transform)
+        {
+            MemoryStream stream = new MemoryStream();
+            using (CryptoStream cs = new CryptoStream(stream, transform, CryptoStreamMode.Write))
+            {
+                cs.Write(buffer, 0, buffer.Length);
+            }
+            return stream.ToArray();
         }
     }
 }

@@ -63,6 +63,8 @@
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='decryptReceiptResponse']/parameter[@name='p1']" name="name">appKey</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='parseJSONReceiptResponse']/parameter[@type='java.lang.String']" name="name">receiptResponse</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='parseJSONReceiptResponse']/parameter[@type='org.json.JSONArray']" name="name">receiptArray</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='init']" name="managedName">InitInternal</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='init']" name="visibility">internal</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='init']/parameter[@name='p0']" name="name">context</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='init']/parameter[@name='p1']" name="name">developerUuid</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='getGameData']/parameter[@name='p0']" name="name">name</attr>
@@ -92,4 +94,10 @@
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Purchasable']/constructor/parameter[@name='p1']" name="name">encryptedKey</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Purchasable']/constructor/parameter[@name='p2']" name="name">ivBytes</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Purchasable']/constructor/parameter[@name='p3']" name="name">payload</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Receipt']/constructor/parameter[@name='p0']" name="name">identifier</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Receipt']/constructor/parameter[@name='p1']" name="name">priceInCents</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Receipt']/constructor/parameter[@name='p2']" name="name">purchaseDate</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Receipt']/constructor/parameter[@name='p3']" name="name">generatedDate</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Receipt']/constructor/parameter[@name='p4']" name="name">gamerUuid</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Receipt']/constructor/parameter[@name='p5']" name="name">uuid</attr>
 </metadata>

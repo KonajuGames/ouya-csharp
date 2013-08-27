@@ -4,14 +4,16 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Text;
 using System.Threading.Tasks;
+using Android.Runtime;
 using Java.Security;
 using Java.Security.Spec;
-using Android.Runtime;
-using Org.Json;
-using Javax.Crypto.Spec;
 using Javax.Crypto;
-using System.Text;
+using Javax.Crypto.Spec;
+using Org.Json;
 
 namespace Ouya.Console.Api
 {
@@ -26,14 +28,31 @@ namespace Ouya.Console.Api
         // Public key for decrypting responses
         IPublicKey _publicKey;
 
+        [Conditional("DEBUG")]
+        static internal void Log(string msg)
+        {
+            Android.Util.Log.Debug("OUYA", msg);
+        }
+
         /// <summary>
         /// Initializes the facade. Should only be called once.
         /// </summary>
         /// <param name="context">An Android Context object. Usually the Activity object.</param>
         /// <param name="developerUuid">The developer UUID, which is obtained from the developer portal.</param>
-        /// <param name="applicationKey">The application key obtained from the developer portal.</param>
-        public void Init(Android.Content.Context context, string developerUuid, byte[] applicationKey)
+        public void Init(Android.Content.Context context, string developerUuid)
         {
+            // Load the key from the resources
+            byte[] applicationKey = null;
+            var resId = context.Resources.GetIdentifier("key", "raw", context.PackageName);
+            using (var stream = context.Resources.OpenRawResource(resId))
+            {
+                using (var ms = new MemoryStream())
+                {
+                    stream.CopyTo(ms);
+                    applicationKey = ms.ToArray();
+                }
+            }
+            
             // Generate the public key from the application key
             using (var keySpec = new X509EncodedKeySpec(applicationKey))
             {
@@ -43,59 +62,62 @@ namespace Ouya.Console.Api
                 }
             }
 
-            Init(context, developerUuid);
+            InitInternal(context, developerUuid);
         }
 
         /// <summary>
         /// Requests the current gamer's UUID.
         /// </summary>
         /// <returns>The UUID of the gamer to whom the console is currently registered.</returns>
-        public Task<string> RequestGamerUuidAsync()
+        public async Task<string> RequestGamerUuidAsync()
         {
+            if (!String.IsNullOrEmpty(_gamerUuid))
+                return _gamerUuid;
             var tcs = new TaskCompletionSource<string>();
-            RequestGamerUuid(new StringListener(tcs));
-            tcs.Task.ContinueWith(t => ReceivedGamerUuid(t), TaskContinuationOptions.OnlyOnRanToCompletion);
-            return tcs.Task;
-        }
-
-        void ReceivedGamerUuid(Task<string> task)
-        {
-            _gamerUuid = task.Result;
+            var listener = new StringListener(tcs);
+            RequestGamerUuid(listener);
+            _gamerUuid = await tcs.Task;
+            Log("Gamer uuid " + _gamerUuid);
+            return _gamerUuid;
         }
 
         /// <summary>
         /// Returns a list of Product objects that describe the products (including current price) associated with the specified list of Purchasables.
         /// </summary>
-        /// <param name="purchasables">The string IDs that identify the products to be returned.</param>
+        /// <param name="purchasables">One or more string IDs that identify the products to be returned.</param>
         /// <returns>The list of Product objects.</returns>
-        public Task<IList<Product>> RequestProductListAsync(params string[] purchasables)
+        public async Task<IList<Product>> RequestProductListAsync(params string[] purchasables)
         {
             var list = new JavaList<Purchasable>();
             foreach (var purchasable in purchasables)
             {
                 list.Add(new Purchasable(purchasable));
             }
-            return RequestProductListAsync(list);
+            return await RequestProductListAsync(list);
         }
 
         /// <summary>
         /// Returns a list of Product objects that describe the products (including current price) associated with the specified list of Purchasables.
         /// </summary>
-        /// <param name="purchasables">The Purchasable objects that identify the products to be returned.</param>
+        /// <param name="purchasables">A list of Purchasable objects that identify the products to be returned.</param>
         /// <returns>The list of Product objects.</returns>
-        public Task<IList<Product>> RequestProductListAsync(IList<Purchasable> purchasables)
+        public async Task<IList<Product>> RequestProductListAsync(IList<Purchasable> purchasables)
         {
             var tcs = new TaskCompletionSource<IList<Product>>();
-            RequestProductList(purchasables, new ProductListListener(tcs));
-            return tcs.Task;
+            var listener = new ProductListListener(tcs);
+            RequestProductList(purchasables, listener);
+            return await tcs.Task;
         }
 
         /// <summary>
-        /// 
+        /// Requests that the specified Purchasable be purchased on behalf of the current user.
+        /// The IAP client service is responsible for identifying the user and requesting credentials as appropriate,
+        /// as well as providing all of the UI for the purchase flow. When purchases are successful, a Product object
+        /// is returned that describes the product that was purchased.
         /// </summary>
-        /// <param name="product"></param>
-        /// <returns></returns>
-        public Task<bool> RequestPurchaseAsync(Product product)
+        /// <param name="product">The Purchasable object that describes the item to be purchased.</param>
+        /// <returns>Returns true if the purchase was successful.</returns>
+        public async Task<bool> RequestPurchaseAsync(Product product)
         {
             var tcs = new TaskCompletionSource<bool>();
 
@@ -135,19 +157,30 @@ namespace Ouya.Console.Api
                         Convert.ToBase64String(ivBytes, Base64FormattingOptions.None),
                         Convert.ToBase64String(payload, Base64FormattingOptions.None));
 
-            RequestPurchase(purchasable, new PurchaseListener(tcs, _publicKey, product, uniqueId));
-            return tcs.Task;
+            var listener = new PurchaseListener(tcs, _publicKey, product, uniqueId);
+            RequestPurchase(purchasable, listener);
+            return await tcs.Task;
         }
 
         /// <summary>
-        /// 
+        /// Requests the current receipts from the Store. If the Store is not available, the cached
+        /// receipts from a previous call are returned.
         /// </summary>
-        /// <returns></returns>
-        public Task<IList<Receipt>> RequestReceiptsAsync()
+        /// <returns>The list of Receipt objects.</returns>
+        public async Task<IList<Receipt>> RequestReceiptsAsync()
         {
-            var tcs = new TaskCompletionSource<IList<Receipt>>();
-            RequestReceipts(new ReceiptsListener(tcs, _publicKey, _gamerUuid));
-            return tcs.Task;
+            // We need the gamer UUID for the encryption of the cached receipts, so if the dev
+            // hasn't retrieved the gamer UUID yet, we'll grab it now.
+            var task = Task<IList<Receipt>>.Factory.StartNew(() =>
+                {
+                    if (string.IsNullOrEmpty(_gamerUuid))
+                        _gamerUuid = RequestGamerUuidAsync().Result;
+                    var tcs = new TaskCompletionSource<IList<Receipt>>();
+                    var listener = new ReceiptsListener(tcs, _publicKey, _gamerUuid);
+                    RequestReceipts(listener);
+                    return tcs.Task.Result;
+                });
+            return await task;
         }
     }
 }

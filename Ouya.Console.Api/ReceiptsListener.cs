@@ -2,15 +2,15 @@
 // This file is subject to the terms and conditions defined in
 // file 'LICENSE.txt' which is part of this source code package.
 
-using System.Threading.Tasks;
+using System;
 using System.Collections.Generic;
-using Android.Runtime;
-using System.IO.IsolatedStorage;
 using System.IO;
+using System.IO.IsolatedStorage;
+using System.Threading.Tasks;
+using Android.OS;
+using Android.Runtime;
 using Java.Security;
 using Org.Json;
-using Android.OS;
-using System;
 
 namespace Ouya.Console.Api
 {
@@ -37,39 +37,30 @@ namespace Ouya.Console.Api
         public void OnFailure(int errorCode, string errorMessage, Bundle optionalData)
         {
             // If we have a cached result, return that
-            var str = FromCache();
-            if (!string.IsNullOrEmpty(str))
+            IList<Receipt> receipts = null;
+            try
             {
                 // Parse receipts into a list
-                IList<Receipt> receipts = null;
-                try
-                {
-                    receipts = ReceiptsFromResponse(str);
-                }
-                catch (Exception e)
-                {
-                    OnFailure(OuyaErrorCodes.ThrowDuringOnSuccess, "Error decrypting receipts: " + e.Message, Bundle.Empty);
-                }
-
-                _tcs.SetResult(receipts);
+                receipts = FromCache();
             }
-            else
+            catch (Exception e)
             {
-                // Otherwise throw the exception
-                _tcs.SetException(new OuyaRequestException(errorCode, errorMessage, optionalData));
+                OnFailure(OuyaErrorCodes.ThrowDuringOnSuccess, "Error decrypting receipts: " + e.Message, Bundle.Empty);
             }
+
+            _tcs.SetResult(receipts);
         }
 
         public void OnSuccess(global::Java.Lang.Object result)
         {
             var str = result.JavaCast<Java.Lang.String>().ToString();
-            // Cache the receipts to file
-            ToCache(str);
             // Parse receipts into a list
             IList<Receipt> receipts = null;
             try
             {
                 receipts = ReceiptsFromResponse(str);
+                // Cache the receipts to file for later use when the network may not be accessible
+                ToCache(receipts);
             }
             catch (Exception e)
             {
@@ -86,19 +77,32 @@ namespace Ouya.Console.Api
             {
                 using (var response = new JSONObject(receiptsResponse))
                 {
+                    OuyaFacade.Log(response.ToString(2));
+                    OuyaFacade.Log("Decrypting receipts response");
                     receipts = helper.DecryptReceiptResponse(response, _publicKey);
                 }
             }
             return receipts;
         }
 
-        /// <summary>
-        /// Encrypt the receipts and save them to file.
-        /// </summary>
-        /// <param name="receipts">The plaintext receipts</param>
-        void ToCache(string receipts)
+        // Encrypt the receipts and save them to file.
+        void ToCache(IList<Receipt> receipts)
         {
-            var encryptedReceipts = CryptoHelper.Encrypt(receipts, _gamerUuid);
+            OuyaFacade.Log("Caching receipts");
+            var json = new JSONObject();
+            foreach (var receipt in receipts)
+            {
+                var r = new JSONObject();
+                r.Put("identifier", receipt.Identifier);
+                r.Put("priceInCents", receipt.PriceInCents);
+                r.Put("purchaseDate", receipt.PurchaseDate.ToGMTString());
+                r.Put("generatedDate", receipt.GeneratedDate.ToGMTString());
+                r.Put("gamerUuid", receipt.Gamer);
+                r.Put("uuid", receipt.Uuid);
+                json.Accumulate("receipts", r);
+            }
+            var text = json.ToString();
+            var encryptedReceipts = CryptoHelper.Encrypt(text, _gamerUuid);
             using (var store = IsolatedStorageFile.GetUserStoreForApplication())
             {
                 using (var writer = new StreamWriter(store.OpenFile(receiptsFileName, FileMode.OpenOrCreate)))
@@ -108,12 +112,11 @@ namespace Ouya.Console.Api
             }
         }
 
-        /// <summary>
-        /// Load the cached receipts from file and return the decrypted result.
-        /// </summary>
-        /// <returns>The plaintext receipts</returns>
-        string FromCache()
+        // Load the cached receipts from file and return the decrypted result.
+        IList<Receipt> FromCache()
         {
+            OuyaFacade.Log("Returning cached receipts");
+            IList<Receipt> receipts = null;
             string encryptedReceipts = string.Empty;
             using (var store = IsolatedStorageFile.GetUserStoreForApplication())
             {
@@ -126,8 +129,28 @@ namespace Ouya.Console.Api
                 }
             }
             if (!string.IsNullOrEmpty(encryptedReceipts))
-                return CryptoHelper.Decrypt(encryptedReceipts, _gamerUuid);
-            return string.Empty;
+            {
+                var decryptedReceipts = CryptoHelper.Decrypt(encryptedReceipts, _gamerUuid);
+                var json = new JSONObject(decryptedReceipts);
+                var list = json.OptJSONArray("receipts");
+                if (list != null)
+                {
+                    receipts = new List<Receipt>(list.Length());
+                    for (int i = 0; i < list.Length(); ++i)
+                    {
+                        var node = list.GetJSONObject(i);
+                        var identifier = node.GetString("identifier");
+                        var priceInCents = node.GetInt("priceInCents");
+                        var purchaseDate = new Java.Util.Date(node.GetString("purchaseDate"));
+                        var generatedDate = new Java.Util.Date(node.GetString("generatedDate"));
+                        var gamerUuid = node.GetString("gamerUuid");
+                        var uuid = node.GetString("uuid");
+                        var receipt = new Receipt(identifier, priceInCents, purchaseDate, generatedDate, gamerUuid, uuid);
+                        receipts.Add(receipt);
+                    }
+                }
+            }
+            return receipts;
         }
     }
 }
