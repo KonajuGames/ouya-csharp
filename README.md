@@ -15,3 +15,24 @@ Deploy the game to the device.  Now it will show up in the OUYA Launcher.
 
 
 Disclaimer: This project is a community-supported extension to the OUYA Development Kit and is in no way connected to OUYA, Inc. The OUYA name is owned by OUYA, Inc.
+
+
+Prerequisites
+-------------
+
+The library uses the new async/await keywords that were introduced in Xamarin.Android 4.8.  In order to use these keywords in Visual Studio 2010, you will need the [Async CTP version 3.0](http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=9983) installed.
+
+
+Examples
+--------
+
+Using the new async/await style APIs is very simple.  This example retrieves the products from the Store, initiates a purchase for the first item and if successful, retrieves the receipts.
+
+```cs
+    products = await facade.RequestProductListAsync("__TEST__01", "__TEST__02");
+    var purchaseResult = await facade.RequestPurchaseAsync(products[0]);
+    if (purchaseResult)
+        receipts = await facade.RequestReceiptsAsync();
+```
+
+Error handling for this example simply involves wrapping it in a `try..catch` block.
