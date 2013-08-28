@@ -45,7 +45,7 @@ namespace Ouya.Console.Api
             }
             catch (Exception e)
             {
-                OnFailure(OuyaErrorCodes.ThrowDuringOnSuccess, "Error decrypting receipts: " + e.Message, Bundle.Empty);
+                OnFailure(OuyaErrorCodes.ThrowDuringOnSuccess, "Error decaching receipts: " + e.Message, Bundle.Empty);
             }
 
             _tcs.SetResult(receipts);
@@ -77,7 +77,6 @@ namespace Ouya.Console.Api
             {
                 using (var response = new JSONObject(receiptsResponse))
                 {
-                    OuyaFacade.Log(response.ToString(2));
                     OuyaFacade.Log("Decrypting receipts response");
                     receipts = helper.DecryptReceiptResponse(response, _publicKey);
                 }
@@ -90,6 +89,7 @@ namespace Ouya.Console.Api
         {
             OuyaFacade.Log("Caching receipts");
             var json = new JSONObject();
+            var array = new JSONArray();
             foreach (var receipt in receipts)
             {
                 var r = new JSONObject();
@@ -99,8 +99,9 @@ namespace Ouya.Console.Api
                 r.Put("generatedDate", receipt.GeneratedDate.ToGMTString());
                 r.Put("gamerUuid", receipt.Gamer);
                 r.Put("uuid", receipt.Uuid);
-                json.Accumulate("receipts", r);
+                array.Put(r);
             }
+            json.Accumulate("receipts", array);
             var text = json.ToString();
             var encryptedReceipts = CryptoHelper.Encrypt(text, _gamerUuid);
             using (var store = IsolatedStorageFile.GetUserStoreForApplication())
