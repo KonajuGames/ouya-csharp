@@ -28,10 +28,30 @@ namespace Ouya.Console.Api
         // Public key for decrypting responses
         IPublicKey _publicKey;
 
+        // Default timeout of 30 seconds
+        int timeout = 5000; //System.Threading.Timeout.Infinite;
+
+        /// <summary>
+        /// The timeout for the asynchronous requests, specified in milliseconds.
+        /// </summary>
+        public int Timeout
+        {
+            get
+            {
+                return timeout;
+            }
+            set
+            {
+                timeout = value;
+                if (timeout < 0)
+                    timeout = 0;
+            }
+        }
+
         [Conditional("DEBUG")]
         static internal void Log(string msg)
         {
-            Android.Util.Log.Debug("OUYA", msg);
+            Android.Util.Log.Debug("OUYA-C#", msg);
         }
 
         /// <summary>
@@ -74,10 +94,17 @@ namespace Ouya.Console.Api
             if (!String.IsNullOrEmpty(_gamerUuid))
                 return _gamerUuid;
             var tcs = new TaskCompletionSource<string>();
-            var listener = new StringListener(tcs);
-            RequestGamerUuid(listener);
-            _gamerUuid = await tcs.Task;
-            Log("Gamer uuid " + _gamerUuid);
+            var listener = new GamerUuidListener(tcs);
+            try
+            {
+                RequestGamerUuid(listener);
+                _gamerUuid = await tcs.Task.TimeoutAfter(timeout);
+            }
+            catch (Exception e)
+            {
+                Log(e.GetType().Name + ": " + e.Message);
+                _gamerUuid = GamerUuidListener.FromCache();
+            }
             return _gamerUuid;
         }
 
@@ -106,7 +133,7 @@ namespace Ouya.Console.Api
             var tcs = new TaskCompletionSource<IList<Product>>();
             var listener = new ProductListListener(tcs);
             RequestProductList(purchasables, listener);
-            return await tcs.Task;
+            return await tcs.Task.TimeoutAfter(timeout);
         }
 
         /// <summary>
@@ -159,7 +186,7 @@ namespace Ouya.Console.Api
 
             var listener = new PurchaseListener(tcs, _publicKey, product, uniqueId);
             RequestPurchase(purchasable, listener);
-            return await tcs.Task;
+            return await tcs.Task.TimeoutAfter(timeout);
         }
 
         /// <summary>
@@ -175,12 +202,23 @@ namespace Ouya.Console.Api
                 {
                     if (string.IsNullOrEmpty(_gamerUuid))
                         _gamerUuid = RequestGamerUuidAsync().Result;
+                    // No gamerUuid means no receipts
+                    if (string.IsNullOrEmpty(_gamerUuid))
+                        return null;
                     var tcs = new TaskCompletionSource<IList<Receipt>>();
                     var listener = new ReceiptsListener(tcs, _publicKey, _gamerUuid);
                     RequestReceipts(listener);
-                    return tcs.Task.Result;
+                    return tcs.Task.TimeoutAfter(timeout).Result;
                 });
-            return await task;
+            try
+            {
+                return await task;
+            }
+            catch (Exception e)
+            {
+                Log(e.GetType().Name + ": " + e.Message);
+            }
+            return ReceiptsListener.FromCache(_gamerUuid);
         }
     }
 }

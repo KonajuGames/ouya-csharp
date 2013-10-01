@@ -1,7 +1,7 @@
 ouya-csharp
 ===========
 
-C# bindings for the OUYA Development Kit 1.0.7
+C# bindings for the OUYA Development Kit 1.0.8
 
 To get your Mono for Android game showing up in the OUYA Launcher, you will need to:
 - set the project to use API Level 16
@@ -38,3 +38,9 @@ Using the new async/await style APIs is very simple.  This example retrieves the
 ```
 
 Error handling for this example simply involves wrapping it in a `try..catch` block.
+
+
+Features
+--------
+
+The gamer UUID and the receipts are now cached on the device.  This allows the gamer UUID and the receipts to be retrieved even if there is no network connection.  This requires no code support from the game as this is all done entirely within the OUYA C# library.  The receipts are stored in an encrypted file to minimize potential for modification or falsification.

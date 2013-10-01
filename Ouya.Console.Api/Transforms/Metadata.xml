@@ -31,8 +31,12 @@
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CreditCardInfo.1']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserInfo']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CreditCardInfo']" />
-  <!-- Remove deprecated methods -->
+  <!-- Remove deprecated methods and nodes that shouldn't be public -->
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='bindRequestHasBeenMade']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='Product']/method[@name='setProductVersionToBundle']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='Product']/field[@name='CREATOR']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='Product']/field[@name='CURRENT_PRODUCT_VERSION']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='Product']/field[@name='INITIAL_PRODUCT_VERSION']" />
   <!-- Rename method parameters -->
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaAuthenticationHelper']/method[@name='handleError']/parameter[@name='p0']" name="name">activity</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaAuthenticationHelper']/method[@name='handleError']/parameter[@name='p1']" name="name">errorCode</attr>
@@ -89,6 +93,8 @@
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Product']/constructor/parameter[@name='p0']" name="name">identifier</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Product']/constructor/parameter[@name='p1']" name="name">name</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Product']/constructor/parameter[@name='p2']" name="name">price</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Product']/constructor/parameter[@name='p3']" name="name">localPrice</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Product']/constructor/parameter[@name='p4']" name="name">currencyCode</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Product']/method[@name='readFromJSONObject']/parameter[@name='p0']" name="name">json</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Purchasable']/constructor/parameter[@name='p0']" name="name">identifier</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Purchasable']/constructor/parameter[@name='p1']" name="name">encryptedKey</attr>
@@ -100,4 +106,6 @@
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Receipt']/constructor/parameter[@name='p3']" name="name">generatedDate</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Receipt']/constructor/parameter[@name='p4']" name="name">gamerUuid</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Receipt']/constructor/parameter[@name='p5']" name="name">uuid</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Receipt']/constructor/parameter[@name='p6']" name="name">localPrice</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='Receipt']/constructor/parameter[@name='p7']" name="name">currencyCode</attr>
 </metadata>

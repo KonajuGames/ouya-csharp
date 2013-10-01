@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CryptoHelper.cs" />
+    <Compile Include="GamerUuidListener.cs" />
     <Compile Include="OuyaAuthenticationHelper.cs" />
     <Compile Include="OuyaFacade.cs" />
     <Compile Include="OuyaRequestException.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="PurchaseListener.cs" />
     <Compile Include="ReceiptsListener.cs" />
     <Compile Include="StringListener.cs" />
+    <Compile Include="TaskExtensions.cs" />
     <Compile Include="VoidListener.cs" />
   </ItemGroup>
   <ItemGroup>

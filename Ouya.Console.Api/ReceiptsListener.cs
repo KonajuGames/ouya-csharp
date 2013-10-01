@@ -41,11 +41,12 @@ namespace Ouya.Console.Api
             try
             {
                 // Parse receipts into a list
-                receipts = FromCache();
+                receipts = FromCache(_gamerUuid);
             }
             catch (Exception e)
             {
-                OnFailure(OuyaErrorCodes.ThrowDuringOnSuccess, "Error decaching receipts: " + e.Message, Bundle.Empty);
+                OuyaFacade.Log("Error decaching receipts: " + e.Message);
+                _tcs.SetException(new OuyaRequestException(errorCode, errorMessage, optionalData));
             }
 
             _tcs.SetResult(receipts);
@@ -58,9 +59,9 @@ namespace Ouya.Console.Api
             IList<Receipt> receipts = null;
             try
             {
-                receipts = ReceiptsFromResponse(str);
+                receipts = ReceiptsFromResponse(str, _publicKey);
                 // Cache the receipts to file for later use when the network may not be accessible
-                ToCache(receipts);
+                ToCache(receipts, _gamerUuid);
             }
             catch (Exception e)
             {
@@ -70,7 +71,7 @@ namespace Ouya.Console.Api
             _tcs.SetResult(receipts);
         }
 
-        IList<Receipt> ReceiptsFromResponse(string receiptsResponse)
+        static IList<Receipt> ReceiptsFromResponse(string receiptsResponse, IPublicKey publicKey)
         {
             IList<Receipt> receipts = null;
             using (var helper = new OuyaEncryptionHelper())
@@ -78,14 +79,14 @@ namespace Ouya.Console.Api
                 using (var response = new JSONObject(receiptsResponse))
                 {
                     OuyaFacade.Log("Decrypting receipts response");
-                    receipts = helper.DecryptReceiptResponse(response, _publicKey);
+                    receipts = helper.DecryptReceiptResponse(response, publicKey);
                 }
             }
             return receipts;
         }
 
         // Encrypt the receipts and save them to file.
-        void ToCache(IList<Receipt> receipts)
+        static void ToCache(IList<Receipt> receipts, string gamerUuid)
         {
             OuyaFacade.Log("Caching receipts");
             var json = new JSONObject();
@@ -94,16 +95,20 @@ namespace Ouya.Console.Api
             {
                 var r = new JSONObject();
                 r.Put("identifier", receipt.Identifier);
-                r.Put("priceInCents", receipt.PriceInCents);
+                // PriceInCents is now deprecated. Use LocalPrice and CurrencyCode instead.
+                // Retain field for compatibility.
+                r.Put("priceInCents", 0);
                 r.Put("purchaseDate", receipt.PurchaseDate.ToGMTString());
                 r.Put("generatedDate", receipt.GeneratedDate.ToGMTString());
                 r.Put("gamerUuid", receipt.Gamer);
                 r.Put("uuid", receipt.Uuid);
+                r.Put("localPrice", receipt.LocalPrice);
+                r.Put("currencyCode", receipt.Currency);
                 array.Put(r);
             }
             json.Accumulate("receipts", array);
             var text = json.ToString();
-            var encryptedReceipts = CryptoHelper.Encrypt(text, _gamerUuid);
+            var encryptedReceipts = CryptoHelper.Encrypt(text, gamerUuid);
             using (var store = IsolatedStorageFile.GetUserStoreForApplication())
             {
                 using (var writer = new StreamWriter(store.OpenFile(receiptsFileName, FileMode.OpenOrCreate)))
@@ -114,7 +119,7 @@ namespace Ouya.Console.Api
         }
 
         // Load the cached receipts from file and return the decrypted result.
-        IList<Receipt> FromCache()
+        static internal IList<Receipt> FromCache(string gamerUuid)
         {
             OuyaFacade.Log("Returning cached receipts");
             IList<Receipt> receipts = null;
@@ -131,7 +136,7 @@ namespace Ouya.Console.Api
             }
             if (!string.IsNullOrEmpty(encryptedReceipts))
             {
-                var decryptedReceipts = CryptoHelper.Decrypt(encryptedReceipts, _gamerUuid);
+                var decryptedReceipts = CryptoHelper.Decrypt(encryptedReceipts, gamerUuid);
                 var json = new JSONObject(decryptedReceipts);
                 var list = json.OptJSONArray("receipts");
                 if (list != null)
@@ -144,13 +149,28 @@ namespace Ouya.Console.Api
                         var priceInCents = node.GetInt("priceInCents");
                         var purchaseDate = new Java.Util.Date(node.GetString("purchaseDate"));
                         var generatedDate = new Java.Util.Date(node.GetString("generatedDate"));
-                        var gamerUuid = node.GetString("gamerUuid");
+                        var gamer = node.GetString("gamerUuid");
                         var uuid = node.GetString("uuid");
-                        var receipt = new Receipt(identifier, priceInCents, purchaseDate, generatedDate, gamerUuid, uuid);
+                        // Cater for reading old receipts written with pre-1.0.8
+                        double localPrice = priceInCents / 100.0;
+                        string currencyCode = "USD";
+                        try
+                        {
+                            localPrice = node.GetDouble("localPrice");
+                            currencyCode = node.GetString("currencyCode");
+                        }
+                        catch (JSONException)
+                        {
+                            OuyaFacade.Log("Older receipt found. Assuming USD price.");
+                        }
+                        var receipt = new Receipt(identifier, priceInCents, purchaseDate, generatedDate, gamer, uuid, localPrice, currencyCode);
                         receipts.Add(receipt);
                     }
                 }
             }
+            // Return an empty list if nothing was found
+            if (receipts == null)
+                receipts = new List<Receipt>();
             return receipts;
         }
     }
