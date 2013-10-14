@@ -221,6 +221,18 @@
 <parameter name="p1" type="android.view.KeyEvent">
 </parameter>
 </method>
+<method abstract="false" deprecated="not deprecated" final="false" name="setCursorBitmap" native="false" return="void" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="android.graphics.Bitmap">
+</parameter>
+<parameter name="p1" type="float">
+</parameter>
+<parameter name="p2" type="float">
+</parameter>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="showCursor" native="false" return="void" static="true" synchronized="false" visibility="public">
+<parameter name="p0" type="boolean">
+</parameter>
+</method>
 <method abstract="false" deprecated="not deprecated" final="false" name="startOfFrame" native="false" return="void" static="true" synchronized="false" visibility="public">
 </method>
 <field deprecated="not deprecated" final="true" name="AXIS_L2" static="true" transient="false" type="int" type-generic-aware="int" value="17" visibility="public" volatile="false">
@@ -392,6 +404,8 @@
 <field deprecated="not deprecated" final="true" name="SERVER_OFFLINE" static="true" transient="false" type="int" type-generic-aware="int" value="3005" visibility="public" volatile="false">
 </field>
 <field deprecated="not deprecated" final="true" name="THROW_DURING_ON_SUCCESS" static="true" transient="false" type="int" type-generic-aware="int" value="3004" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="true" name="VOUCHER_MISMATCH" static="true" transient="false" type="int" type-generic-aware="int" value="2032" visibility="public" volatile="false">
 </field>
 <field deprecated="not deprecated" final="true" name="VOUCHER_NOT_FOUND" static="true" transient="false" type="int" type-generic-aware="int" value="2028" visibility="public" volatile="false">
 </field>
@@ -1024,6 +1038,8 @@
 </parameter>
 <parameter name="p13" type="java.lang.String">
 </parameter>
+<parameter name="p14" type="java.lang.String">
+</parameter>
 </constructor>
 <constructor deprecated="not deprecated" final="false" name="AppDetails" static="false" type="tv.ouya.console.api.store.AppDetails" visibility="public">
 <parameter name="p0" type="org.json.JSONObject">
@@ -1032,6 +1048,10 @@
 <constructor deprecated="not deprecated" final="false" name="AppDetails" static="false" type="tv.ouya.console.api.store.AppDetails" visibility="public">
 </constructor>
 <method abstract="false" deprecated="not deprecated" final="false" name="describeContents" native="false" return="int" static="false" synchronized="false" visibility="public">
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="getDescription" native="false" return="tv.ouya.console.api.store.AppDescription" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
 </method>
 <method abstract="false" deprecated="not deprecated" final="false" name="readFromJSON" native="false" return="void" static="false" synchronized="false" visibility="public">
 <parameter name="p0" type="org.json.JSONObject">
@@ -1074,6 +1094,8 @@
 <field deprecated="not deprecated" final="false" name="uuid" static="false" transient="false" type="java.lang.String" type-generic-aware="java.lang.String" visibility="public" volatile="false">
 </field>
 <field deprecated="not deprecated" final="false" name="versionNumber" static="false" transient="false" type="java.lang.String" type-generic-aware="java.lang.String" visibility="public" volatile="false">
+</field>
+<field deprecated="not deprecated" final="false" name="videoUrl" static="false" transient="false" type="java.lang.String" type-generic-aware="java.lang.String" visibility="public" volatile="false">
 </field>
 </class>
 <class abstract="false" deprecated="not deprecated" extends="java.lang.Object" extends-generic-aware="java.lang.Object" final="false" name="AppDetails.1" static="true" visibility="">
@@ -2093,6 +2115,16 @@
 <exception name="RemoteException" type="android.os.RemoteException">
 </exception>
 </method>
+<method abstract="true" deprecated="not deprecated" final="false" name="runPut" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="tv.ouya.console.internal.IStringListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
 </interface>
 <class abstract="true" deprecated="not deprecated" extends="android.os.Binder" extends-generic-aware="android.os.Binder" final="false" name="IStoreServiceDefinition.Stub" static="true" visibility="public">
 <implements name="tv.ouya.console.internal.IStoreServiceDefinition" name-generic-aware="tv.ouya.console.internal.IStoreServiceDefinition">
@@ -2237,6 +2269,16 @@
 <parameter name="p0" type="java.lang.String">
 </parameter>
 <parameter name="p1" type="tv.ouya.console.internal.IStringListener">
+</parameter>
+<exception name="RemoteException" type="android.os.RemoteException">
+</exception>
+</method>
+<method abstract="false" deprecated="not deprecated" final="false" name="runPut" native="false" return="void" static="false" synchronized="false" visibility="public">
+<parameter name="p0" type="java.lang.String">
+</parameter>
+<parameter name="p1" type="java.lang.String">
+</parameter>
+<parameter name="p2" type="tv.ouya.console.internal.IStringListener">
 </parameter>
 <exception name="RemoteException" type="android.os.RemoteException">
 </exception>

@@ -7,10 +7,16 @@ using Android.OS;
 
 namespace Ouya.Console.Api
 {
+    /// <summary>
+    /// Exception thrown by OUYA requests when errors occur.
+    /// </summary>
     public class OuyaRequestException : Exception
     {
         Bundle _bundle;
 
+        /// <summary>
+        /// Gets the error code associated with the error.
+        /// </summary>
         public int ErrorCode
         {
             get
@@ -19,6 +25,9 @@ namespace Ouya.Console.Api
             }
         }
 
+        /// <summary>
+        /// Gets the bundle that may hold additional error information.
+        /// </summary>
         public Bundle Bundle
         {
             get
@@ -27,6 +36,12 @@ namespace Ouya.Console.Api
             }
         }
 
+        /// <summary>
+        /// Internal constructor to create the OuyaRequestionException object.
+        /// </summary>
+        /// <param name="errorCode">The error code associated with the error.</param>
+        /// <param name="errorMessage">The error message associated with the error.</param>
+        /// <param name="bundle">The bundle that may hold additional error information.</param>
         internal OuyaRequestException(int errorCode, string errorMessage, Bundle bundle)
             : base(errorMessage)
         {

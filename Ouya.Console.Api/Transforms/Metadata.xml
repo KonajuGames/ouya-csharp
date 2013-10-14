@@ -31,6 +31,7 @@
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CreditCardInfo.1']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='UserInfo']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='CreditCardInfo']" />
+  <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='JsonResponseListener']" />
   <!-- Remove deprecated methods and nodes that shouldn't be public -->
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaFacade']/method[@name='bindRequestHasBeenMade']" />
   <remove-node path="/api/package[@name='tv.ouya.console.api']/class[@name='Product']/method[@name='setProductVersionToBundle']" />
@@ -59,6 +60,10 @@
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='onGenericMotionEvent']/parameter[@name='p0']" name="name">event</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getAxisValue']/parameter[@name='p0']" name="name">axis</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='getButton']/parameter[@name='p0']" name="name">button</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='setCursorBitmap']/parameter[@name='p0']" name="name">bitmap</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='setCursorBitmap']/parameter[@name='p1']" name="name">hotSpotX</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='setCursorBitmap']/parameter[@name='p2']" name="name">hotSpotY</attr>
+  <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaController']/method[@name='showCursor']/parameter[@name='p0']" name="name">showCursor</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='decryptProductResponse']/parameter[@name='p0']" name="name">productResponse</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='decryptProductResponse']/parameter[@name='p1']" name="name">appKey</attr>
   <attr path="/api/package[@name='tv.ouya.console.api']/class[@name='OuyaEncryptionHelper']/method[@name='decryptPurchaseResponse']/parameter[@name='p0']" name="name">encryptedResponse</attr>
