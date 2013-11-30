@@ -186,7 +186,8 @@ namespace Ouya.Console.Api
 
             var listener = new PurchaseListener(tcs, _publicKey, product, uniqueId);
             RequestPurchase(purchasable, listener);
-            return await tcs.Task.TimeoutAfter(timeout);
+            // No timeout for purchase as it shows a user dialog
+            return await tcs.Task;
         }
 
         /// <summary>
