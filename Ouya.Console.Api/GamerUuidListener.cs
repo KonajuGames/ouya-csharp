@@ -69,12 +69,19 @@ namespace Ouya.Console.Api
         static void ToCache(string gamerUuid)
         {
             OuyaFacade.Log("Caching gamerUuid");
-            using (var store = IsolatedStorageFile.GetUserStoreForApplication())
+            try
             {
-                using (var writer = new StreamWriter(store.OpenFile(gamerUuidFileName, FileMode.OpenOrCreate)))
+                using (var store = IsolatedStorageFile.GetUserStoreForApplication())
                 {
-                    writer.Write(gamerUuid);
+                    using (var writer = new StreamWriter(store.OpenFile(gamerUuidFileName, FileMode.OpenOrCreate)))
+                    {
+                        writer.Write(gamerUuid);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                OuyaFacade.Log("Error caching gamerUuid: " + e.Message);
             }
         }
 
@@ -83,24 +90,31 @@ namespace Ouya.Console.Api
         {
             OuyaFacade.Log("Returning cached gamerUuid");
             string gamerUuid = null;
-            using (var store = IsolatedStorageFile.GetUserStoreForApplication())
+            try
             {
-                if (store.FileExists(gamerUuidFileName))
+                using (var store = IsolatedStorageFile.GetUserStoreForApplication())
                 {
-                    using (var reader = new StreamReader(store.OpenFile(gamerUuidFileName, FileMode.Open)))
+                    if (store.FileExists(gamerUuidFileName))
                     {
-                        gamerUuid = reader.ReadToEnd();
-                        try
+                        using (var reader = new StreamReader(store.OpenFile(gamerUuidFileName, FileMode.Open)))
                         {
-                            Guid.Parse(gamerUuid);
-                        }
-                        catch (Exception)
-                        {
-                            OuyaFacade.Log("Incorrectly formatted gamerUuid");
-                            gamerUuid = null;
+                            gamerUuid = reader.ReadToEnd();
+                            try
+                            {
+                                Guid.Parse(gamerUuid);
+                            }
+                            catch (Exception e2)
+                            {
+                                OuyaFacade.Log("Incorrectly formatted gamerUuid: " + e2.Message);
+                                gamerUuid = null;
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception e1)
+            {
+                OuyaFacade.Log("Error decaching gamerUuid: " + e1.Message);
             }
             return gamerUuid;
         }

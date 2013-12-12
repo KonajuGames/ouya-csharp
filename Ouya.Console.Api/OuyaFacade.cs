@@ -29,7 +29,7 @@ namespace Ouya.Console.Api
         IPublicKey _publicKey;
 
         // Default timeout of 30 seconds
-        int timeout = 5000; //System.Threading.Timeout.Infinite;
+        int timeout = 30000; //*/System.Threading.Timeout.Infinite;
 
         /// <summary>
         /// The timeout for the asynchronous requests, specified in milliseconds.
