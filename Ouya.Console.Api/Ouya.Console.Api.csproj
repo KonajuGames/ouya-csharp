@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CryptoHelper.cs" />
+    <Compile Include="GamerInfoListener.cs" />
     <Compile Include="GamerUuidListener.cs" />
     <Compile Include="OuyaAuthenticationHelper.cs" />
     <Compile Include="OuyaFacade.cs" />

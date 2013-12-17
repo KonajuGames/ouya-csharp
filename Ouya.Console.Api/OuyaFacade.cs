@@ -24,6 +24,8 @@ namespace Ouya.Console.Api
     {
         // Local copy of gamer uuid for receipt caching
         string _gamerUuid;
+        // Local copy of the gamer info for caching
+        GamerInfo _gamerInfo;
 
         // Public key for decrypting responses
         IPublicKey _publicKey;
@@ -83,6 +85,29 @@ namespace Ouya.Console.Api
             }
 
             InitInternal(context, developerUuid);
+        }
+
+        /// <summary>
+        /// Requests the current gamer's info.
+        /// </summary>
+        /// <returns>The GamerInfo of the user to whom the console is currently registered.</returns>
+        public async Task<GamerInfo> RequestGamerInfoAsync()
+        {
+            if (_gamerInfo != null)
+                return _gamerInfo;
+            var tcs = new TaskCompletionSource<GamerInfo>();
+            var listener = new GamerInfoListener(tcs);
+            try
+            {
+                RequestGamerInfo(listener);
+                _gamerInfo = await tcs.Task.TimeoutAfter(timeout);
+            }
+            catch (Exception e)
+            {
+                Log(e.GetType().Name + ": " + e.Message);
+                _gamerInfo = GamerInfoListener.FromCache();
+            }
+            return _gamerInfo;
         }
 
         /// <summary>
