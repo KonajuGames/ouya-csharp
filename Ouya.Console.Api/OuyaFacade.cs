@@ -146,6 +146,9 @@ namespace Ouya.Console.Api
         /// <returns>Returns true if the purchase was successful.</returns>
         public async Task<bool> RequestPurchaseAsync(Product product)
         {
+            if (ReferenceEquals(product, null))
+                throw new ArgumentNullException("product");
+
             var tcs = new TaskCompletionSource<bool>();
 
             // Create the Purchasable object from the supplied product
