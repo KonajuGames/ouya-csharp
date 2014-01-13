@@ -114,6 +114,7 @@ namespace Ouya.Console.Api
         /// Requests the current gamer's UUID.
         /// </summary>
         /// <returns>The UUID of the gamer to whom the console is currently registered.</returns>
+        [Obsolete("Replaced by RequestGamerInfoAsync")]
         public async Task<string> RequestGamerUuidAsync()
         {
             if (!String.IsNullOrEmpty(_gamerUuid))
@@ -229,13 +230,13 @@ namespace Ouya.Console.Api
             // hasn't retrieved the gamer UUID yet, we'll grab it now.
             var task = Task<IList<Receipt>>.Factory.StartNew(() =>
                 {
-                    if (string.IsNullOrEmpty(_gamerUuid))
-                        _gamerUuid = RequestGamerUuidAsync().Result;
-                    // No gamerUuid means no receipts
-                    if (string.IsNullOrEmpty(_gamerUuid))
+                    if (_gamerInfo == null)
+                        _gamerInfo = RequestGamerInfoAsync().Result;
+                    // No gamerInfo means no receipts
+                    if (_gamerInfo == null)
                         return null;
                     var tcs = new TaskCompletionSource<IList<Receipt>>();
-                    var listener = new ReceiptsListener(tcs, _publicKey, _gamerUuid);
+                    var listener = new ReceiptsListener(tcs, _publicKey, _gamerInfo.Uuid);
                     RequestReceipts(listener);
                     return tcs.Task.TimeoutAfter(timeout).Result;
                 });
@@ -247,7 +248,7 @@ namespace Ouya.Console.Api
             {
                 Log(e.GetType().Name + ": " + e.Message);
             }
-            return ReceiptsListener.FromCache(_gamerUuid);
+            return _gamerInfo != null ? ReceiptsListener.FromCache(_gamerInfo.Uuid) : null;
         }
     }
 }
