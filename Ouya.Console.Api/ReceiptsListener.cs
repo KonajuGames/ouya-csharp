@@ -38,6 +38,7 @@ namespace Ouya.Console.Api
         {
             // If we have a cached result, return that
             IList<Receipt> receipts = null;
+            OuyaFacade.Log("ReceiptsListener.OnFailure: " + errorMessage);
             try
             {
                 // Parse receipts into a list
@@ -111,7 +112,7 @@ namespace Ouya.Console.Api
             var encryptedReceipts = CryptoHelper.Encrypt(text, gamerUuid);
             using (var store = IsolatedStorageFile.GetUserStoreForApplication())
             {
-                using (var writer = new StreamWriter(store.OpenFile(receiptsFileName, FileMode.OpenOrCreate)))
+                using (var writer = new StreamWriter(store.OpenFile(receiptsFileName, FileMode.OpenOrCreate, FileAccess.Write)))
                 {
                     writer.Write(encryptedReceipts);
                 }
@@ -128,7 +129,7 @@ namespace Ouya.Console.Api
             {
                 if (store.FileExists(receiptsFileName))
                 {
-                    using (var reader = new StreamReader(store.OpenFile(receiptsFileName, FileMode.Open)))
+                    using (var reader = new StreamReader(store.OpenFile(receiptsFileName, FileMode.Open, FileAccess.Read)))
                     {
                         encryptedReceipts = reader.ReadToEnd();
                     }
