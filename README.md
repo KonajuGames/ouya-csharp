@@ -1,10 +1,10 @@
 ouya-csharp
 ===========
 
-C# bindings for the OUYA Development Kit 1.0.10
+C# bindings for the OUYA Development Kit 1.0.13
 
 To get your Mono for Android game showing up in the OUYA Launcher, you will need to:
-- set the project to use API Level 16
+- set the project to use API Level 16. If using MonoGame, it requires the project be compiled with at least API Level 17.
 - add the Launcher image (732x412 pixels) in Resources/Drawable-xhdpi/ouya_icon.png
 - add the following IntentFilter attribute to your Activity class
 

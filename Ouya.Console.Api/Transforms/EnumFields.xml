@@ -28,5 +28,7 @@
     <field jni-name="BUTTON_R3" clr-name="RightStick" value="107" />
     <field jni-name="BUTTON_U" clr-name="U" value="99" />
     <field jni-name="BUTTON_Y" clr-name="Y" value="100" />
+    <field jni-name="BUTTON_DPAD" clr-name="Dpad" value="23" />
+    <field jni-name="BUTTON_HOME" clr-name="Home" value="3" />
   </mapping>
 </enum-field-mappings>

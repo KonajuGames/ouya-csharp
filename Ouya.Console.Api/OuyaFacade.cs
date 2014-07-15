@@ -30,8 +30,8 @@ namespace Ouya.Console.Api
         // Public key for decrypting responses
         IPublicKey _publicKey;
 
-        // Default timeout of 5 seconds for a request
-        int timeout = 5000; //*/System.Threading.Timeout.Infinite;
+        // Default timeout of 30 seconds
+        int timeout = 30000; //*/System.Threading.Timeout.Infinite;
 
         /// <summary>
         /// The timeout for the asynchronous requests, specified in milliseconds.
@@ -50,7 +50,7 @@ namespace Ouya.Console.Api
             }
         }
 
-        //[Conditional("DEBUG")]
+        [Conditional("DEBUG")]
         static internal void Log(string msg)
         {
             Android.Util.Log.Debug("OUYA-C#", msg);
@@ -85,6 +85,9 @@ namespace Ouya.Console.Api
             }
 
             InitInternal(context, developerUuid);
+            OuyaController.Init(context);
+
+            Log("Hardware: " + GetDeviceHardware().DeviceName());
         }
 
         /// <summary>
@@ -249,17 +252,6 @@ namespace Ouya.Console.Api
                 Log(e.GetType().Name + ": " + e.Message);
             }
             return _gamerInfo != null ? ReceiptsListener.FromCache(_gamerInfo.Uuid) : null;
-        }
-
-        /// <summary>
-        /// Returns the cached receipts if available.
-        /// </summary>
-        /// <returns>The cached receipts.</returns>
-        public IList<Receipt> RequestCachedReceipts()
-        {
-            if (_gamerInfo == null)
-                _gamerInfo = GamerInfoListener.FromCache();
-            return ReceiptsListener.FromCache(_gamerInfo.Uuid);
         }
     }
 }

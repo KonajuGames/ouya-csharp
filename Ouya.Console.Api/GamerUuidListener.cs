@@ -32,7 +32,6 @@ namespace Ouya.Console.Api
         {
             // If we have a cached result, return that
             string gamerUuid = string.Empty;
-            OuyaFacade.Log("GamerUuidListener.OnFailure: " + errorMessage);
             try
             {
                 // Parse gamerUuid from file
@@ -74,7 +73,7 @@ namespace Ouya.Console.Api
             {
                 using (var store = IsolatedStorageFile.GetUserStoreForApplication())
                 {
-                    using (var writer = new StreamWriter(store.OpenFile(gamerUuidFileName, FileMode.OpenOrCreate, FileAccess.Write)))
+                    using (var writer = new StreamWriter(store.OpenFile(gamerUuidFileName, FileMode.OpenOrCreate)))
                     {
                         writer.Write(gamerUuid);
                     }
@@ -97,7 +96,7 @@ namespace Ouya.Console.Api
                 {
                     if (store.FileExists(gamerUuidFileName))
                     {
-                        using (var reader = new StreamReader(store.OpenFile(gamerUuidFileName, FileMode.Open, FileAccess.Read)))
+                        using (var reader = new StreamReader(store.OpenFile(gamerUuidFileName, FileMode.Open)))
                         {
                             gamerUuid = reader.ReadToEnd();
                             try

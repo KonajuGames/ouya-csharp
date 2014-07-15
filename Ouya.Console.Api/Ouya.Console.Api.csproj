@@ -28,11 +28,8 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <DocumentationFile>bin\Release\Ouya.Console.Api.xml</DocumentationFile>
   </PropertyGroup>
@@ -43,10 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ButtonData.cs" />
     <Compile Include="CryptoHelper.cs" />
     <Compile Include="GamerInfoListener.cs" />
     <Compile Include="GamerUuidListener.cs" />
     <Compile Include="OuyaAuthenticationHelper.cs" />
+    <Compile Include="OuyaController.cs" />
     <Compile Include="OuyaFacade.cs" />
     <Compile Include="OuyaRequestException.cs" />
     <Compile Include="ProductListListener.cs" />
