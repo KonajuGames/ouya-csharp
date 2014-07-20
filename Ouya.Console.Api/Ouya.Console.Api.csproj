@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ButtonData.cs" />
     <Compile Include="CryptoHelper.cs" />
     <Compile Include="GamerInfoListener.cs" />
     <Compile Include="GamerUuidListener.cs" />
