@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Ouya.Console.Api</id>
-        <version>1.0.13</version>
+        <version>1.0.13.1</version>
         <title>Ouya.Console.Api</title>
         <authors>Steve Williams,Dean Ellis</authors>
         <owners>KonajuGames</owners>
@@ -10,16 +10,14 @@
         <projectUrl>https://github.com/KonajuGames/ouya-csharp</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/KonajuGames/ouya-csharp/master/images/logo.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>This packages provides C# bindings for the Ouya Console Gaming API
-        </description>
-        <summary>C# Bindings for the Ouya Console Gaming API</summary>
-        <releaseNotes>
-        </releaseNotes>
-        <copyright>Copyright  2015</copyright>
+        <description>This packages provides C# bindings for the OUYA Development Kit.</description>
+        <summary>C# bindings for the OUYA Development Kit</summary>
+        <releaseNotes>First NuGet package. Using ODK 1.0.13.</releaseNotes>
+        <copyright>Copyright 2015 Konaju Games</copyright>
+        <tags>OUYA Android Xamarin</tags>
         <language>en-US</language>
     </metadata>
     <files>
-        <file src="./bin/Release/Ouya.Console.Api.dll" target="lib\MonoAndroid\Ouya.Console.Api.dll" />
-	<file src="../readme.md" target="" />
+        <file src="bin/Release/Ouya.Console.Api.dll" target="lib\MonoAndroid\Ouya.Console.Api.dll" />
     </files>
 </package>

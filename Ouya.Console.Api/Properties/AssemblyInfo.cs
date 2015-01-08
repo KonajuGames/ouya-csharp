@@ -9,12 +9,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ouya-csharp")]
+[assembly: AssemblyTitle("Ouya.Console.Api")]
 [assembly: AssemblyDescription("C# bindings for the OUYA Development Kit")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Konaju Games")]
-[assembly: AssemblyProduct("ouya-csharp")]
-[assembly: AssemblyCopyright("Copyright 2013 © Konaju Games")]
+[assembly: AssemblyProduct("Ouya.Console.Api")]
+[assembly: AssemblyCopyright("Copyright 2015 © Konaju Games")]
 [assembly: AssemblyTrademark("OUYA is a trademark of OUYA, Inc.")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.13.0")]
-[assembly: AssemblyFileVersion("1.0.13.0")]
+[assembly: AssemblyVersion("1.0.13.1")]
+[assembly: AssemblyFileVersion("1.0.13.1")]
